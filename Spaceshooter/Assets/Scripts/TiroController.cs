@@ -27,8 +27,10 @@ public class TiroController : MonoBehaviour
         DestroyWhenOutside();
     }
 
+    //Se destruindo ao sair da tela
     private void DestroyWhenOutside()
     {
+        //Checando se está fora da tela
         if(transform.position.y > 5.2f) {
             Destroy(gameObject);
         }
