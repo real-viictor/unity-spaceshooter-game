@@ -324,10 +324,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tiro
       objectReference: {fileID: 0}
-    - target: {fileID: 7806004766762946230, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
