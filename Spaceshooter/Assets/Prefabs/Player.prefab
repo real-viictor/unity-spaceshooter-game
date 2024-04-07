@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
+  shootObject: {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4

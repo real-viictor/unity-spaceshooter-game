@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     //Determinando velocidade do player
     [SerializeField] private float playerSpeed = 5f;
 
+    //Variável que contém o objeto do tiro
+    [SerializeField] private GameObject shootObject;
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed;
     private float verticalSpeed;
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        Shoot();
     }
 
     //Movendo o Player
@@ -37,5 +41,13 @@ public class PlayerController : MonoBehaviour
         //adicionando velocidade pela variável velocity do Rigidbody, normalizando movimento vertical e multiplicando pela velocidade padrão do player
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
         playerRB.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shootObject, transform.position, Quaternion.identity);
+        }
     }
 }
