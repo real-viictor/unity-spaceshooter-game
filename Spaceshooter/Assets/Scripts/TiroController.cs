@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TiroController : MonoBehaviour
 {
+    [SerializeField] private float shootSpeed = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,6 @@ public class TiroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.up * Time.deltaTime * shootSpeed;
     }
 }
