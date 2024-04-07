@@ -29,12 +29,13 @@ public class PlayerController : MonoBehaviour
     //Movendo o Player
     private void Move()
     {
-        //Detectando se o jogador está pressionando os botões de movimento e multiplicando pela velocidade padrão do player
+        //Detectando se o jogador está pressionando os botões de movimento
         //NOTE: Os botões de movimento são os definidos no Input Manager, em "Edit > Project Settings > InputManager"
-        horizontalSpeed = Input.GetAxis("Horizontal") * playerSpeed;
-        verticalSpeed = Input.GetAxis("Vertical") * playerSpeed;
+        horizontalSpeed = Input.GetAxis("Horizontal");
+        verticalSpeed = Input.GetAxis("Vertical");
 
-        //adicionando velocidade pela variável velocity do Rigidbody, passando as velocidades calculadas anteriormente como vetor
-        rigidbody.velocity = new Vector2(horizontalSpeed, verticalSpeed);
+        //adicionando velocidade pela variável velocity do Rigidbody e multiplicando pela velocidade padrão do player
+        //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
+        rigidbody.velocity = new Vector2(horizontalSpeed, verticalSpeed) * playerSpeed;
     }
 }
