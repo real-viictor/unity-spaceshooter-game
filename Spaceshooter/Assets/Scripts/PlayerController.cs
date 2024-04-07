@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
         horizontalSpeed = Input.GetAxis("Horizontal");
         verticalSpeed = Input.GetAxis("Vertical");
 
-        //adicionando velocidade pela variável velocity do Rigidbody e multiplicando pela velocidade padrão do player
+        //adicionando velocidade pela variável velocity do Rigidbody, normalizando movimento vertical e multiplicando pela velocidade padrão do player
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
-        rigidbody.velocity = new Vector2(horizontalSpeed, verticalSpeed) * playerSpeed;
+        rigidbody.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
     }
 }
