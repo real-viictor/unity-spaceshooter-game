@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         //Detectando se o jogador está pressionando os botões de movimento
         //NOTE: Os botões de movimento são os definidos no Input Manager, em "Edit > Project Settings > InputManager"
-        horizontalSpeed = Input.GetAxis("Horizontal");
-        verticalSpeed = Input.GetAxis("Vertical");
+        horizontalSpeed = Input.GetAxisRaw("Horizontal");
+        verticalSpeed = Input.GetAxisRaw("Vertical");
 
         //adicionando velocidade pela variável velocity do Rigidbody, normalizando movimento vertical e multiplicando pela velocidade padrão do player
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
