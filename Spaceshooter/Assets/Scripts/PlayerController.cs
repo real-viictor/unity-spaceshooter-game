@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     //Movendo o Player
     private void Move()
     {
-        //Detectando se o jogador está pressionando os botões de movimento
+        //Detectando se o jogador está pressionando os botões de movimento (Usando o Input Raw para evitar "Smoothing")
         //NOTE: Os botões de movimento são os definidos no Input Manager, em "Edit > Project Settings > InputManager"
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
         verticalSpeed = Input.GetAxisRaw("Vertical");
