@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Instanciando variável que contém o Rigidbody do player
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D playerRB;
     //Determinando velocidade do player
     [SerializeField] private float playerSpeed = 5f;
 
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Coletando o Rigidbody do player
-        rigidbody = GetComponent<Rigidbody2D>();
+        playerRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -36,6 +36,6 @@ public class PlayerController : MonoBehaviour
 
         //adicionando velocidade pela variável velocity do Rigidbody, normalizando movimento vertical e multiplicando pela velocidade padrão do player
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
-        rigidbody.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
+        playerRB.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
     }
 }
