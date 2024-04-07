@@ -24,6 +24,13 @@ public class TiroController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyWhenOutside();
+    }
+
+    private void DestroyWhenOutside()
+    {
+        if(transform.position.y > 5.2f) {
+            Destroy(gameObject);
+        }
     }
 }
