@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSpeed: 10
+  shootOrigin: Player
 --- !u!50 &4390034224814078618
 Rigidbody2D:
   serializedVersion: 4

@@ -10,15 +10,15 @@ public class TiroController : MonoBehaviour
     //Variável que guarda o Rigidbody do Player
     private Rigidbody2D shootRB;
 
+    [SerializeField] private string shootOrigin;
+
     // Start is called before the first frame update
     void Start()
     {
         //Acessando Rigidbody
         shootRB = GetComponent<Rigidbody2D>();
 
-        //Fazendo o tiro se mover pra cima
-        //NOTE: Como a velocidade do tiro é constante e ele está sendo movido pelo Rigidbody, ele não precisa ficar no Update.
-        shootRB.velocity = Vector2.up * shootSpeed;
+        MoveShoot();    
     }
 
     // Update is called once per frame
@@ -33,6 +33,22 @@ public class TiroController : MonoBehaviour
         //Checando se está fora da tela
         if(transform.position.y > 5.2f) {
             Destroy(gameObject);
+        }
+    }
+
+    //Atirando para o lado dependendo da entidade que gerou o tiro
+    private void MoveShoot()
+    {
+        //Fazendo o tiro se mover pra cima
+        //NOTE: Como a velocidade do tiro é constante e ele está sendo movido pelo Rigidbody, ele não precisa ficar no Update.
+        if (shootOrigin == "Player")
+        {
+            shootRB.velocity = Vector2.up * shootSpeed;
+        }
+        else
+        {
+            Debug.Log("Teste");
+            shootRB.velocity = Vector2.down * shootSpeed;
         }
     }
 }
