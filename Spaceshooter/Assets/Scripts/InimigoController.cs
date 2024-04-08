@@ -8,7 +8,7 @@ public class InimigoController : MonoBehaviour
 
     private float enemySpeed = 1.5f;
 
-    private float shootInterval = 3f;
+    private float shotTimer = 3f;
 
     private bool isInPosition = false;
 
@@ -40,15 +40,15 @@ public class InimigoController : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot(float shotDelay = 3f)
     {
         if(isInPosition)
         {
-            shootInterval -= Time.deltaTime;
-            if(shootInterval <= 0)
+            shotTimer -= Time.deltaTime;
+            if(shotTimer <= 0)
             {
-                shootInterval = 3f;
-                Instantiate(enemyShotObject, transform.position, Quaternion.identity);
+                shotTimer = shotDelay;
+                Instantiate(enemyShotObject, new Vector3(transform.position.x, transform.position.y - 0.3f, 0), Quaternion.identity);
             }
         }
     }
