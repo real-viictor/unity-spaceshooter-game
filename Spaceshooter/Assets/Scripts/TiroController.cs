@@ -47,7 +47,6 @@ public class TiroController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Teste");
             shootRB.velocity = Vector2.down * shootSpeed;
         }
     }
