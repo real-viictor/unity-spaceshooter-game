@@ -23,6 +23,9 @@ public class InimigoController : MonoBehaviour
 
         //Definindo movimentação do inimigo para baixo
         enemyRB.velocity = Vector2.down * enemySpeed;
+
+        //Atribuindo tempo do delay ao primeiro disparo do inimigo
+        shotTimer = shotDelay;
     }
 
     // Update is called once per frame
@@ -40,10 +43,7 @@ public class InimigoController : MonoBehaviour
         {
             enemyRB.velocity = Vector2.down * 0;
             //Informando a variável de controle que o inimigo pode começar a atirar, pois já se posicionou
-            isInPosition = true;
-
-            //Definindo o tempo do primeiro disparo após se posicionar
-            shotTimer = shotDelay;
+            isInPosition = true;           
         }
     }
 
