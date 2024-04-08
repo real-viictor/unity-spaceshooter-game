@@ -8,6 +8,12 @@ public class InimigoController : MonoBehaviour
 
     private float enemySpeed = 1.5f;
 
+    private float shootInterval = 3f;
+
+    private bool isInPosition = false;
+
+    [SerializeField] private GameObject enemyShotObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,7 @@ public class InimigoController : MonoBehaviour
     void Update()
     {
         Stop();
+        Shoot();
     }
 
     private void Stop()
@@ -29,6 +36,20 @@ public class InimigoController : MonoBehaviour
         if (transform.position.y <= 3.5f)
         {
             enemyRB.velocity = Vector2.down * 0;
+            isInPosition = true;
+        }
+    }
+
+    private void Shoot()
+    {
+        if(isInPosition)
+        {
+            shootInterval -= Time.deltaTime;
+            if(shootInterval <= 0)
+            {
+                shootInterval = 3f;
+                Instantiate(enemyShotObject, transform.position, Quaternion.identity);
+            }
         }
     }
 }
