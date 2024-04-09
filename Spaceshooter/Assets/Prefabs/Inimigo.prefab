@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2374231712947807847}
   - component: {fileID: 3153584952610125005}
   - component: {fileID: 6275204720120474833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Inimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 2603917190722025886}
   - component: {fileID: 4993401413599062136}
   - component: {fileID: 1573842778942683782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
