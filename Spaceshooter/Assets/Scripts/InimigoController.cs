@@ -6,14 +6,22 @@ public class InimigoController : MonoBehaviour
 {
     private Rigidbody2D enemyRB;
 
+    //Velocidade padrão do inimigo
     private float enemySpeed = 1.5f;
 
+    //Variável usada como timer que calcula o tempo de cada disparo
     private float shotTimer;
 
+    //Variável que guarda o tempo do disparo
     private float shotDelay;
 
+    //Variável de controle que informa ao script se o inimigo deve parar de se mover
     private bool isInPosition = false;
 
+    //Variável que determina onde o tiro deve sair
+    [SerializeField] private Transform shotPosition;
+
+    //Objeto do tiro, que é instanciado na função Shoot()
     [SerializeField] private GameObject enemyShotObject;
 
     // Start is called before the first frame update
@@ -64,7 +72,7 @@ public class InimigoController : MonoBehaviour
             {
                 shotDelay = Random.Range(2, 3);
                 shotTimer = shotDelay;
-                Instantiate(enemyShotObject, new Vector3(transform.position.x, transform.position.y - 0.3f, 0), Quaternion.identity);
+                Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
             }
         }
     }
