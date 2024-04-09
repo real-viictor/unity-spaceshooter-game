@@ -10,7 +10,7 @@ public class InimigoController : MonoBehaviour
 
     private float shotTimer;
 
-    private float shotDelay = 3f;
+    private float shotDelay;
 
     private bool isInPosition = false;
 
@@ -23,6 +23,9 @@ public class InimigoController : MonoBehaviour
 
         //Definindo movimentação do inimigo para baixo
         enemyRB.velocity = Vector2.down * enemySpeed;
+
+        //Aleatorizando o primeiro tiro
+        shotDelay = Random.Range(1f, 3f);
 
         //Atribuindo tempo do delay ao primeiro disparo do inimigo
         shotTimer = shotDelay;
@@ -56,9 +59,10 @@ public class InimigoController : MonoBehaviour
             //Reduzindo o Timer até zerar
             shotTimer -= Time.deltaTime;
 
-            //Ao zerar o Timer, redefine o timer e instancia um tiro
+            //Ao zerar o Timer, aleatoriza o tempo do próximo tiro, redefine o timer e instancia um tiro
             if(shotTimer <= 0)
             {
+                shotDelay = Random.Range(1f, 3f);
                 shotTimer = shotDelay;
                 Instantiate(enemyShotObject, new Vector3(transform.position.x, transform.position.y - 0.3f, 0), Quaternion.identity);
             }
