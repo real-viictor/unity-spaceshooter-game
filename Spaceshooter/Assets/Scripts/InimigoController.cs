@@ -62,7 +62,8 @@ public class InimigoController : MonoBehaviour
             //Ao zerar o Timer, aleatoriza o tempo do próximo tiro, redefine o timer e instancia um tiro
             if(shotTimer <= 0)
             {
-                shotDelay = Random.Range(1f, 3f);
+                shotDelay = Random.Range(2, 3);
+                Debug.Log(shotDelay);
                 shotTimer = shotDelay;
                 Instantiate(enemyShotObject, new Vector3(transform.position.x, transform.position.y - 0.3f, 0), Quaternion.identity);
             }
