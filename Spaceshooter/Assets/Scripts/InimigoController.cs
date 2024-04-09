@@ -63,7 +63,6 @@ public class InimigoController : MonoBehaviour
             if(shotTimer <= 0)
             {
                 shotDelay = Random.Range(2, 3);
-                Debug.Log(shotDelay);
                 shotTimer = shotDelay;
                 Instantiate(enemyShotObject, new Vector3(transform.position.x, transform.position.y - 0.3f, 0), Quaternion.identity);
             }

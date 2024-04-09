@@ -10,6 +10,9 @@ public class TiroController : MonoBehaviour
     //Variável que guarda o Rigidbody do Player
     private Rigidbody2D shotRB;
 
+    //Variável de controle que guarda a informação se o tiro está visível ou não
+    private bool isVisible;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +32,11 @@ public class TiroController : MonoBehaviour
     //Se destruindo ao sair da tela
     private void DestroyWhenOutside()
     {
-        //Checando se está fora da tela
-        if(transform.position.y > 5.2f || transform.position.y < -5.2f) {
+        //Verificando se o componente é visível utilizando o isVisible no SpriteRenderer do filho do gameObject
+        isVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+
+        //Se não é visível, então está fora da tela, então destruir-se
+        if (!isVisible) {
             Destroy(gameObject);
         }
     }
