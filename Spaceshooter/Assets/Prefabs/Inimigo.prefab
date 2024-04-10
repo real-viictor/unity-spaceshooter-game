@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2374231712947807847}
   - component: {fileID: 3153584952610125005}
   - component: {fileID: 6275204720120474833}
-  - component: {fileID: 3416116094662400093}
+  - component: {fileID: 6304520881709159725}
   m_Layer: 6
   m_Name: Inimigo
   m_TagString: Untagged
@@ -77,8 +77,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3416116094662400093
-BoxCollider2D:
+--- !u!70 &6304520881709159725
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,19 +109,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034203053, y: 0.013301134}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5591612, y: 1.0798068}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.028237939, y: 0.020707726}
+  m_Size: {x: 0.5338855, y: 1.0865963}
+  m_Direction: 0
 --- !u!1 &4006805111707123457
 GameObject:
   m_ObjectHideFlags: 0
