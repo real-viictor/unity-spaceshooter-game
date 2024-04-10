@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6774121734382404023}
   - component: {fileID: 2290585455863778159}
   m_Layer: 8
-  m_Name: tiro_player
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
