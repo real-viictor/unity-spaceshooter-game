@@ -28,6 +28,7 @@ public class InimigoController : MonoBehaviour
     //Objeto do tiro, que é instanciado na função Shoot()
     [SerializeField] private GameObject enemyShotObject;
 
+    //Variável que guarda o prefab de explosão do inimigo
     [SerializeField] private GameObject enemyExplosion;
 
     // Start is called before the first frame update
@@ -86,8 +87,10 @@ public class InimigoController : MonoBehaviour
     //Função publica que causa dano ao inimigo, baseado no dano passado na chamada da variável, caso a vida zere, o inimigo é destruído
     public void LoseHealth(int damage)
     {
+        //Reduzindo a vida baseado no dano
         enemyHealth-=damage;
 
+        //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
         if (enemyHealth <= 0)
         {
             Instantiate(enemyExplosion, transform.position, Quaternion.identity);
