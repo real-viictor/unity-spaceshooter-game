@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     //Variável que contém o objeto do tiro
     [SerializeField] private GameObject shotObject;
 
+    //Variável que determina onde o tiro deve sair
+    [SerializeField] private Transform shotPosition;
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed;
     private float verticalSpeed;
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(shotObject, transform.position, Quaternion.identity);
+            Instantiate(shotObject, shotPosition.position, Quaternion.identity);
         }
     }
 }
