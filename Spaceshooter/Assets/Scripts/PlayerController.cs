@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         playerHealth -= damage;
         if (playerHealth <= 0)
         {
-            Debug.Log("Player tem 0 de vida, método de morte rodou");
+            SceneManager.LoadScene("Main");
         }
     }
 }
