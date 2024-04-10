@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
 
+    private int playerHealth = 3;
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed;
     private float verticalSpeed;
@@ -46,11 +48,22 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
     }
 
+    //Disparando com o Player
     private void Shoot()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(shotObject, shotPosition.position   , Quaternion.identity);
+            Instantiate(shotObject, shotPosition.position, Quaternion.identity);
+        }
+    }
+
+    //Método que tira vida do Player ao ser atingido por um tiro, caso a vida do player zere, então ele morre
+    public void LoseHealth(int damage)
+    {
+        playerHealth -= damage;
+        if (playerHealth <= 0)
+        {
+            Debug.Log("Player tem 0 de vida, método de morte rodou");
         }
     }
 }

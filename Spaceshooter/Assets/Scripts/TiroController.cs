@@ -37,9 +37,16 @@ public class TiroController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<InimigoController>().LoseHealth(shotDamage);
         Destroy(gameObject);
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<InimigoController>().LoseHealth(shotDamage);
+        }else
+        {
+            collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);
+        }
     }
 }

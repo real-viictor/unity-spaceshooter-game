@@ -48,7 +48,6 @@ public class InimigoController : MonoBehaviour
     {
         Stop();
         Shoot();
-        Die();
     }
 
     //Para o inimigo na altura da tela desejada
@@ -82,18 +81,14 @@ public class InimigoController : MonoBehaviour
         }
     }
 
-    //Destroi o inimigo quando a vida dele zerar
-    private void Die()
+    //Função publica que causa dano ao inimigo, baseado no dano passado na chamada da variável, caso a vida zere, o inimigo é destruído
+    public void LoseHealth(int damage)
     {
+        enemyHealth-=damage;
+
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
         }
-    }
-
-    //Função publica que causa dano ao inimigo, baseado no dano passado na chamada da variável
-    public void LoseHealth(int damage)
-    {
-        enemyHealth-=damage;
     }
 }
