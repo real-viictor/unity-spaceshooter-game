@@ -28,6 +28,8 @@ public class InimigoController : MonoBehaviour
     //Objeto do tiro, que é instanciado na função Shoot()
     [SerializeField] private GameObject enemyShotObject;
 
+    [SerializeField] private GameObject enemyExplosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +90,7 @@ public class InimigoController : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            Instantiate(enemyExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
