@@ -7,6 +7,8 @@ public class TiroController : MonoBehaviour
     //Velocidade default do tiro
     [SerializeField] private float shotSpeed = 10f;
 
+    [SerializeField] private int shotDamage = 1;
+
     //Variável que guarda o Rigidbody do Player
     private Rigidbody2D shotRB;
 
@@ -33,5 +35,11 @@ public class TiroController : MonoBehaviour
         if (!GetComponentInChildren<SpriteRenderer>().isVisible) {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<InimigoController>().LoseHealth(shotDamage);
+        Destroy(gameObject);
     }
 }

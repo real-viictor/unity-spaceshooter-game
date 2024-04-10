@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class InimigoController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class InimigoController : MonoBehaviour
 
     //Variável de controle que informa ao script se o inimigo deve parar de se mover
     private bool isInPosition = false;
+
+    //Variável de vida que reduz a cada tiro tomado
+    private int enemyHealth = 1;
 
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
@@ -44,6 +48,7 @@ public class InimigoController : MonoBehaviour
     {
         Stop();
         Shoot();
+        Die();
     }
 
     //Para o inimigo na altura da tela desejada
@@ -75,5 +80,20 @@ public class InimigoController : MonoBehaviour
                 Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
             }
         }
+    }
+
+    //Destroi o inimigo quando a vida dele zerar
+    private void Die()
+    {
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    //Função publica que causa dano ao inimigo, baseado no dano passado na chamada da variável
+    public void LoseHealth(int damage)
+    {
+        enemyHealth-=damage;
     }
 }
