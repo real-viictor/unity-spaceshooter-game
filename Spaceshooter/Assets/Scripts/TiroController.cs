@@ -9,6 +9,8 @@ public class TiroController : MonoBehaviour
 
     [SerializeField] private int shotDamage = 1;
 
+    [SerializeField] private GameObject shotExplosion;
+
     //Variável que guarda o Rigidbody do Player
     private Rigidbody2D shotRB;
 
@@ -39,6 +41,7 @@ public class TiroController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Instantiate(shotExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
         if (collision.CompareTag("Enemy"))

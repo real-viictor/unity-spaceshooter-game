@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotSpeed: 10
   shotDamage: 1
+  shotExplosion: {fileID: 4680779225304755007, guid: b2c14721ce09289418ad3dfa5b58abae, type: 3}
 --- !u!50 &4390034224814078618
 Rigidbody2D:
   serializedVersion: 4
