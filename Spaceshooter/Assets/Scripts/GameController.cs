@@ -24,9 +24,9 @@ public class GameController : MonoBehaviour
     private void SpawnEnemies()
     {
         spawnerTimer -= Time.deltaTime;
-         if (spawnerTimer <= 0 )
+         if (spawnerTimer <= 0)
         {
-            spawnerTimer = Random.Range(0.5f, 2f);
+            spawnerTimer = 2;//Random.Range(0.5f, 2f);
             Instantiate(enemyObject, new Vector3(Random.Range(-8f,8f),8,0), Quaternion.identity);
         }
     }

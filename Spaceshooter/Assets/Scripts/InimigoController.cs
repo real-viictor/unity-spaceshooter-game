@@ -47,6 +47,9 @@ public class InimigoController : MonoBehaviour
 
         //Atribuindo tempo do delay ao primeiro disparo do inimigo
         shotTimer = shotDelay;
+
+        //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
+        enemyPosition = Random.Range(2f, 4f);
     }
 
     // Update is called once per frame
@@ -59,9 +62,6 @@ public class InimigoController : MonoBehaviour
     //Para o inimigo na altura da tela desejada
     private void Stop()
     {
-        //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
-        enemyPosition = Random.Range(3f, 3.9f);
-        Debug.Log(enemyPosition);
         //Parando o inimigo na posição determinada da tela
         if (transform.position.y <= enemyPosition)
         {
