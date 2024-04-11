@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6528482601682489199}
   - component: {fileID: 5817328779435760655}
   - component: {fileID: 8780656307280391112}
-  - component: {fileID: 6532026910182850285}
+  - component: {fileID: 5454139724988604557}
   m_Layer: 0
   m_Name: Impacto Tiro
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6532026910182850285
+--- !u!114 &5454139724988604557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
