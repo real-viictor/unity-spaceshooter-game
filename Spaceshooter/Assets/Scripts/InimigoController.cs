@@ -21,6 +21,9 @@ public class InimigoController : MonoBehaviour
 
     //Variável de vida que reduz a cada tiro tomado
     private int enemyHealth = 1;
+    
+    //Variável que guardará onde o inimigo ficará posicionado na tela
+    private float enemyPosition;
 
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
@@ -56,8 +59,11 @@ public class InimigoController : MonoBehaviour
     //Para o inimigo na altura da tela desejada
     private void Stop()
     {
-        //Parando o inimigo na posição desejada da tela
-        if (transform.position.y <= 3.5f)
+        //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
+        enemyPosition = Random.Range(3f, 3.9f);
+        Debug.Log(enemyPosition);
+        //Parando o inimigo na posição determinada da tela
+        if (transform.position.y <= enemyPosition)
         {
             enemyRB.velocity = Vector2.down * 0;
             //Informando a variável de controle que o inimigo pode começar a atirar, pois já se posicionou
