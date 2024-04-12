@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class InimigoController : MonoBehaviour
+public class Enemy01Controller : MonoBehaviour
 {
     private Rigidbody2D enemyRB;
 

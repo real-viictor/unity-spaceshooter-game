@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inimigo_1_0
+      name: enemy_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +131,7 @@ TextureImporter:
         width: 66
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inimigo_1_1
+      name: enemy_1_1
       rect:
         serializedVersion: 2
         x: 66
@@ -152,7 +152,7 @@ TextureImporter:
         width: 66
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inimigo_1_2
+      name: enemy_1_2
       rect:
         serializedVersion: 2
         x: 132
@@ -173,7 +173,7 @@ TextureImporter:
         width: 66
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inimigo_1_3
+      name: enemy_1_3
       rect:
         serializedVersion: 2
         x: 198
@@ -194,7 +194,7 @@ TextureImporter:
         width: 66
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inimigo_1_0: 1549765103
-      inimigo_1_1: 1280778316
-      inimigo_1_2: -455148258
-      inimigo_1_3: 896175423
+      enemy_1_0: 1549765103
+      enemy_1_1: 1280778316
+      enemy_1_2: -455148258
+      enemy_1_3: 896175423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Inimigo
+  m_Name: Explosion
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1549765103, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
+      value: {fileID: -1140847288, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
     - time: 0.083333336
-      value: {fileID: 1549765103, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
+      value: {fileID: -381694369, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
     - time: 0.16666667
-      value: {fileID: -455148258, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
+      value: {fileID: -539677212, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
     - time: 0.25
-      value: {fileID: 896175423, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
+      value: {fileID: -506286707, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - time: 0.33333334
+      value: {fileID: -594690977, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - time: 0.41666666
+      value: {fileID: -460293873, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - time: 0.5
+      value: {fileID: -1421756407, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,21 +56,24 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1549765103, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
-    - {fileID: 1549765103, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
-    - {fileID: -455148258, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
-    - {fileID: 896175423, guid: e1606c89ec480a54e837c4ceacf408f3, type: 3}
+    - {fileID: -1140847288, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -381694369, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -539677212, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -506286707, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -594690977, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -460293873, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
+    - {fileID: -1421756407, guid: cbe1f2dbf4560ba4ea09c704e00aa988, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -78,4 +87,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5833333
+    functionName: DestroyFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

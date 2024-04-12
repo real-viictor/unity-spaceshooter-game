@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6304520881709159725}
   - component: {fileID: 5727880128258117951}
   m_Layer: 6
-  m_Name: Inimigo
+  m_Name: Enemy 01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4579557433346775272}
   m_Layer: 6
-  m_Name: "Posi\xE7\xE3o do Tiro"
+  m_Name: Shot Position
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

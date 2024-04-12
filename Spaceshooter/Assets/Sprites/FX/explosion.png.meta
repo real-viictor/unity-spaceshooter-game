@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4af99a647e65a3489bbd5b36c35aeeb
+guid: cbe1f2dbf4560ba4ea09c704e00aa988
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,106 +123,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: impacto_tiro_0
+      name: explosion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 85
-        height: 52
+        width: 117
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f60677008bd0aa4d89fa70159c3e588
-      internalID: -1224957041
+      spriteID: e1775ad0ca1623b41afa32bbf6462287
+      internalID: -1140847288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impacto_tiro_1
+      name: explosion_1
       rect:
         serializedVersion: 2
-        x: 85
+        x: 117
         y: 0
-        width: 85
-        height: 52
+        width: 117
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b813a08f563d9840b72a19c5f2acfbd
-      internalID: -773139518
+      spriteID: d13c4200c472cb847a73f94d14ff10ac
+      internalID: -381694369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impacto_tiro_2
+      name: explosion_2
       rect:
         serializedVersion: 2
-        x: 170
+        x: 234
         y: 0
-        width: 85
-        height: 52
+        width: 117
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 186b7a16e70bfc64c8b464cbfdde6298
-      internalID: 2022620992
+      spriteID: d15e460fcfe0b7b42a1543b5361e6a85
+      internalID: -539677212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impacto_tiro_3
+      name: explosion_3
       rect:
         serializedVersion: 2
-        x: 255
+        x: 351
         y: 0
-        width: 85
-        height: 52
+        width: 117
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d2a76085bd641f4fb15d5d09e27a12c
-      internalID: 473419656
+      spriteID: 3077139a6a3fe294599e2d855b4d53a0
+      internalID: -506286707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impacto_tiro_4
+      name: explosion_4
       rect:
         serializedVersion: 2
-        x: 340
+        x: 468
         y: 0
-        width: 85
-        height: 52
+        width: 117
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296fc63bb5c1b0147b2661e5750b4826
-      internalID: 602919829
+      spriteID: d3915a4a62ffe7c4cb40e42fc91534e9
+      internalID: -594690977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion_5
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 117
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161201a99571f0b4681982e15bc0723e
+      internalID: -460293873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion_6
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 0
+        width: 117
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fd405f721e224b4ba12cc8026bd7ddc
+      internalID: -1421756407
       vertices: []
       indices: 
       edges: []
@@ -238,11 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      impacto_tiro_0: -1224957041
-      impacto_tiro_1: -773139518
-      impacto_tiro_2: 2022620992
-      impacto_tiro_3: 473419656
-      impacto_tiro_4: 602919829
+      explosion_0: -1140847288
+      explosion_1: -381694369
+      explosion_2: -539677212
+      explosion_3: -506286707
+      explosion_4: -594690977
+      explosion_5: -460293873
+      explosion_6: -1421756407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

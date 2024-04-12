@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4390034224814078618}
   - component: {fileID: 8532040678443779369}
   m_Layer: 8
-  m_Name: Tiro
+  m_Name: Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

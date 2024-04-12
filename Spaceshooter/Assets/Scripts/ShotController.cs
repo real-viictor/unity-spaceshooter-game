@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TiroController : MonoBehaviour
+public class ShotController : MonoBehaviour
 {   
     //Velocidade default do tiro
     [SerializeField] private float shotSpeed = 10f;
@@ -46,7 +46,7 @@ public class TiroController : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<InimigoController>().LoseHealth(shotDamage);
+            collision.gameObject.GetComponent<Enemy01Controller>().LoseHealth(shotDamage);
         }else
         {
             collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbe1f2dbf4560ba4ea09c704e00aa988
+guid: f4af99a647e65a3489bbd5b36c35aeeb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,148 +123,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosao_0
+      name: shot_impact_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 117
-        height: 96
+        width: 85
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1775ad0ca1623b41afa32bbf6462287
-      internalID: -1140847288
+      spriteID: 7f60677008bd0aa4d89fa70159c3e588
+      internalID: -1224957041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_1
+      name: shot_impact_1
       rect:
         serializedVersion: 2
-        x: 117
+        x: 85
         y: 0
-        width: 117
-        height: 96
+        width: 85
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d13c4200c472cb847a73f94d14ff10ac
-      internalID: -381694369
+      spriteID: 0b813a08f563d9840b72a19c5f2acfbd
+      internalID: -773139518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_2
+      name: shot_impact_2
       rect:
         serializedVersion: 2
-        x: 234
+        x: 170
         y: 0
-        width: 117
-        height: 96
+        width: 85
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15e460fcfe0b7b42a1543b5361e6a85
-      internalID: -539677212
+      spriteID: 186b7a16e70bfc64c8b464cbfdde6298
+      internalID: 2022620992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_3
+      name: shot_impact_3
       rect:
         serializedVersion: 2
-        x: 351
+        x: 255
         y: 0
-        width: 117
-        height: 96
+        width: 85
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3077139a6a3fe294599e2d855b4d53a0
-      internalID: -506286707
+      spriteID: 3d2a76085bd641f4fb15d5d09e27a12c
+      internalID: 473419656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_4
+      name: shot_impact_4
       rect:
         serializedVersion: 2
-        x: 468
+        x: 340
         y: 0
-        width: 117
-        height: 96
+        width: 85
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3915a4a62ffe7c4cb40e42fc91534e9
-      internalID: -594690977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: explosao_5
-      rect:
-        serializedVersion: 2
-        x: 585
-        y: 0
-        width: 117
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 161201a99571f0b4681982e15bc0723e
-      internalID: -460293873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: explosao_6
-      rect:
-        serializedVersion: 2
-        x: 702
-        y: 0
-        width: 117
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fd405f721e224b4ba12cc8026bd7ddc
-      internalID: -1421756407
+      spriteID: 296fc63bb5c1b0147b2661e5750b4826
+      internalID: 602919829
       vertices: []
       indices: 
       edges: []
@@ -280,13 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      explosao_0: -1140847288
-      explosao_1: -381694369
-      explosao_2: -539677212
-      explosao_3: -506286707
-      explosao_4: -594690977
-      explosao_5: -460293873
-      explosao_6: -1421756407
+      shot_impact_0: -1224957041
+      shot_impact_1: -773139518
+      shot_impact_2: 2022620992
+      shot_impact_3: 473419656
+      shot_impact_4: 602919829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
