@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
 
+    [SerializeField] private GameObject explosion;
+
+    //Vida do player
     private int playerHealth = 3;
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
@@ -62,9 +65,12 @@ public class PlayerController : MonoBehaviour
     public void LoseHealth(int damage)
     {
         playerHealth -= damage;
+
+        //Destruindo o player ao zerar a vida e criando uma explosão no local
         if (playerHealth <= 0)
         {
-            SceneManager.LoadScene("Main");
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }

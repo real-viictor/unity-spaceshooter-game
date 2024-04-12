@@ -32,7 +32,7 @@ public class InimigoController : MonoBehaviour
     [SerializeField] private GameObject enemyShotObject;
 
     //Variável que guarda o prefab de explosão do inimigo
-    [SerializeField] private GameObject enemyExplosion;
+    [SerializeField] private GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -99,7 +99,7 @@ public class InimigoController : MonoBehaviour
         //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
         if (enemyHealth <= 0)
         {
-            Instantiate(enemyExplosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
