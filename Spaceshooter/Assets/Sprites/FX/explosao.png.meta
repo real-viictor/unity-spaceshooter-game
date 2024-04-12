@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e07776184be074488b54dcc0315a2a5
+guid: cbe1f2dbf4560ba4ea09c704e00aa988
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosao_inimigos_0
+      name: explosao_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d4c462ea134be4b8ab60ab35a01472
-      internalID: 576545691
+      spriteID: e1775ad0ca1623b41afa32bbf6462287
+      internalID: -1140847288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_1
+      name: explosao_1
       rect:
         serializedVersion: 2
         x: 117
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5a5024c53cd25f4eaa8ead0ea3e281d
-      internalID: 1035296961
+      spriteID: d13c4200c472cb847a73f94d14ff10ac
+      internalID: -381694369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_2
+      name: explosao_2
       rect:
         serializedVersion: 2
         x: 234
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eefb1bdd0d7df14290c365638117b75
-      internalID: -1037171359
+      spriteID: d15e460fcfe0b7b42a1543b5361e6a85
+      internalID: -539677212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_3
+      name: explosao_3
       rect:
         serializedVersion: 2
         x: 351
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9888f21e4bdbf184e9cc268700059aeb
-      internalID: 76512055
+      spriteID: 3077139a6a3fe294599e2d855b4d53a0
+      internalID: -506286707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_4
+      name: explosao_4
       rect:
         serializedVersion: 2
         x: 468
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deaf1abb699bbb74b9daa0ce17412ed9
-      internalID: 590333849
+      spriteID: d3915a4a62ffe7c4cb40e42fc91534e9
+      internalID: -594690977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_5
+      name: explosao_5
       rect:
         serializedVersion: 2
         x: 585
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9c8b5f188da2ee4098b30a4569c6d16
-      internalID: 1905612811
+      spriteID: 161201a99571f0b4681982e15bc0723e
+      internalID: -460293873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosao_inimigos_6
+      name: explosao_6
       rect:
         serializedVersion: 2
         x: 702
@@ -263,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7d3f426f5eb61a43bcf64af711a9d93
-      internalID: -1061018909
+      spriteID: 6fd405f721e224b4ba12cc8026bd7ddc
+      internalID: -1421756407
       vertices: []
       indices: 
       edges: []
@@ -280,13 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      explosao_inimigos_0: 576545691
-      explosao_inimigos_1: 1035296961
-      explosao_inimigos_2: -1037171359
-      explosao_inimigos_3: 76512055
-      explosao_inimigos_4: 590333849
-      explosao_inimigos_5: 1905612811
-      explosao_inimigos_6: -1061018909
+      explosao_0: -1140847288
+      explosao_1: -381694369
+      explosao_2: -539677212
+      explosao_3: -506286707
+      explosao_4: -594690977
+      explosao_5: -460293873
+      explosao_6: -1421756407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
