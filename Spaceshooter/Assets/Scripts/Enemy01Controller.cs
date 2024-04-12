@@ -3,27 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class Enemy01Controller : MonoBehaviour
+public class Enemy01Controller : EnemyEntity
 {
     private Rigidbody2D enemyRB;
 
-    //Velocidade padrão do inimigo
-    private float enemySpeed = 1.5f;
-
     //Variável usada como timer que calcula o tempo de cada disparo
     private float shotTimer;
-
-    //Variável que guarda o tempo do disparo
-    private float shotDelay;
-
-    //Variável de controle que informa ao script se o inimigo deve parar de se mover
-    private bool isInPosition = false;
-
-    //Variável de vida que reduz a cada tiro tomado
-    private int enemyHealth = 1;
-    
-    //Variável que guardará onde o inimigo ficará posicionado na tela
-    private float enemyPosition;
 
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
@@ -31,8 +16,11 @@ public class Enemy01Controller : MonoBehaviour
     //Objeto do tiro, que é instanciado na função Shoot()
     [SerializeField] private GameObject enemyShotObject;
 
-    //Variável que guarda o prefab de explosão do inimigo
-    [SerializeField] private GameObject explosion;
+    //Variável de controle que informa ao script se o inimigo deve parar de se mover
+    private bool isInPosition = false;
+    
+    //Variável que guardará onde o inimigo ficará posicionado na tela
+    private float enemyPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +31,7 @@ public class Enemy01Controller : MonoBehaviour
         enemyRB.velocity = Vector2.down * enemySpeed;
 
         //Aleatorizando o primeiro tiro
-        shotDelay = Random.Range(1f, 3f);
-
-        //Atribuindo tempo do delay ao primeiro disparo do inimigo
-        shotTimer = shotDelay;
+        shotTimer = Random.Range(1f, 3f);
 
         //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
         enemyPosition = Random.Range(2f, 4f);
@@ -83,24 +68,12 @@ public class Enemy01Controller : MonoBehaviour
             //Ao zerar o Timer, aleatoriza o tempo do próximo tiro, redefine o timer e instancia um tiro
             if(shotTimer <= 0)
             {
-                shotDelay = Random.Range(2, 3);
-                shotTimer = shotDelay;
+                shotTimer = Random.Range(2, 3);
                 Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
             }
         }
     }
 
     //Função publica que causa dano ao inimigo, baseado no dano passado na chamada da variável, caso a vida zere, o inimigo é destruído
-    public void LoseHealth(int damage)
-    {
-        //Reduzindo a vida baseado no dano
-        enemyHealth-=damage;
-
-        //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
-        if (enemyHealth <= 0)
-        {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-    }
+    
 }

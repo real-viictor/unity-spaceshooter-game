@@ -31,9 +31,9 @@ public class GameController : MonoBehaviour
 
         //Quando o timer zera, redefine o timer em um valor aleatório e instancia o inimigo em algum ponto da tela
          if (spawnerTimer <= 0)
-        {
+         {
             spawnerTimer = Random.Range(1f, 3f);
             Instantiate(enemyObject, new Vector3(Random.Range(-8f,8f),8,0), Quaternion.identity);
-        }
+         }   
     }
 }
