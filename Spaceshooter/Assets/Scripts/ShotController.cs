@@ -46,7 +46,7 @@ public class ShotController : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy01Controller>().LoseHealth(shotDamage);
+            collision.gameObject.GetComponent<EnemyEntity>().LoseHealth(shotDamage);
         }else
         {
             collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);
