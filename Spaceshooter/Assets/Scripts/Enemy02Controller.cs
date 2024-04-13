@@ -111,19 +111,26 @@ public class Enemy02Controller : EnemyEntity
                 movementStartPosition = transform.position;
                 //Aleatorizando o tempo que a movimentação durará
                 movementAnimationDuration = Random.Range(3f, 5f);
-                //Criando a instância do tiro e salvando em uma variável
-                GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
 
                 //Fazendo o inimigo focar o alvo dele no Player
                 var enemyShotTarget = FindObjectOfType<PlayerController>();
 
-                var shotDirection = enemyShotTarget.transform.position - shotInstance.transform.position;
+                //Atirando apenas se o inimigo conseguiu localizar o player na cena
+                if (enemyShotTarget != null)
+                {
+                    //Criando a instância do tiro e salvando em uma variável
+                    GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
 
-                //Fazendo o tiro ir na direção do player, normalizando o vetor e dando a velocidade do tiro atribuída ao inimigo
-                shotInstance.GetComponent<Rigidbody2D>().velocity = shotDirection.normalized * shotSpeed;
+                    var shotDirection = enemyShotTarget.transform.position - shotInstance.transform.position;
 
-                //Fazendo o tiro "olhar" para o Player
-                shotInstance.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                    //Fazendo o tiro ir na direção do player, normalizando o vetor e dando a velocidade do tiro atribuída ao inimigo
+                    shotInstance.GetComponent<Rigidbody2D>().velocity = shotDirection.normalized * shotSpeed;
+
+                    //Fazendo o tiro "olhar" para o Player
+                    //NOTE: A soma de +90 é para compensar a Sprite
+                    shotInstance.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                }
+                
             }
         }
     }
