@@ -7,12 +7,6 @@ public class Enemy01Controller : EnemyEntity
 {
     private Rigidbody2D enemyRB;
 
-    //Variável de controle que informa ao script se o inimigo deve parar de se mover
-    private bool isInPosition = false;
-    
-    //Variável que guardará onde o inimigo ficará posicionado na tela
-    private float enemyTargetYPosition;
-
     // Start is called before the first frame update
     void Start()
     {

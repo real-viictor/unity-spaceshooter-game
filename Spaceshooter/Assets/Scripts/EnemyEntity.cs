@@ -17,15 +17,21 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] protected GameObject explosion;
 
     //Velocidade padrão do inimigo
-    protected float enemySpeed = 1.5f;
+    [SerializeField] protected float enemySpeed;
 
     //Variável de vida que reduz a cada tiro tomado
-    protected int enemyHealth = 1;
+    [SerializeField] protected int enemyHealth;
+
+    //Variável de controle que informa ao script se o inimigo deve parar de se mover
+    protected bool isInPosition = false;
+
+    //Variável que guardará onde o inimigo ficará posicionado na tela
+    protected float enemyTargetYPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
