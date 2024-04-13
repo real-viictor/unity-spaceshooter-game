@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemyEntity : MonoBehaviour
 {
+    //Variável usada como timer que calcula o tempo de cada disparo
+    protected float shotTimer;
+
+    //Variável que determina onde o tiro deve sair
+    [SerializeField] protected Transform shotPosition;
+
+    //Objeto do tiro, que é instanciado na função Shoot()
+    [SerializeField] protected GameObject enemyShotObject;
+
+    //Variável que guarda o prefab de explosão do inimigo
+    [SerializeField] protected GameObject explosion;
 
     //Velocidade padrão do inimigo
     protected float enemySpeed = 1.5f;
 
     //Variável de vida que reduz a cada tiro tomado
     protected int enemyHealth = 1;
-
-    //Variável que guarda o prefab de explosão do inimigo
-    [SerializeField] protected GameObject explosion;
 
     // Start is called before the first frame update
     void Start()

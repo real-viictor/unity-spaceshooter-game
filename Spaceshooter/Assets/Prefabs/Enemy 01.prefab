@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3153584952610125005}
   - component: {fileID: 6275204720120474833}
   - component: {fileID: 6304520881709159725}
-  - component: {fileID: 5727880128258117951}
   m_Layer: 6
   m_Name: Enemy 01
   m_TagString: Enemy
@@ -49,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb6c4f499336e845b9904e14a5ca1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   shotPosition: {fileID: 4579557433346775272}
   enemyShotObject: {fileID: 421518273685639958, guid: 04da6dc87ad41864383e99d9e7c042ab, type: 3}
+  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
+  enemySpeed: 1.5
 --- !u!50 &6275204720120474833
 Rigidbody2D:
   serializedVersion: 4
@@ -114,27 +114,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.030112684, y: 0.06306517}
   m_Size: {x: 0.5226368, y: 0.97633386}
   m_Direction: 0
---- !u!95 &5727880128258117951
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2672573365670325325}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2cc8d69416edaf4882d54957348bd45, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4006805111707123457
 GameObject:
   m_ObjectHideFlags: 0

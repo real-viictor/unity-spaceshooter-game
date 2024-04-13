@@ -7,24 +7,16 @@ public class Enemy01Controller : EnemyEntity
 {
     private Rigidbody2D enemyRB;
 
-    //Variável usada como timer que calcula o tempo de cada disparo
-    private float shotTimer;
-
-    //Variável que determina onde o tiro deve sair
-    [SerializeField] private Transform shotPosition;
-
-    //Objeto do tiro, que é instanciado na função Shoot()
-    [SerializeField] private GameObject enemyShotObject;
-
     //Variável de controle que informa ao script se o inimigo deve parar de se mover
     private bool isInPosition = false;
     
     //Variável que guardará onde o inimigo ficará posicionado na tela
-    private float enemyPosition;
+    private float enemyTargetYPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Pegando o RB do inimigo
         enemyRB = GetComponent<Rigidbody2D>();
 
         //Definindo movimentação do inimigo para baixo
@@ -34,7 +26,7 @@ public class Enemy01Controller : EnemyEntity
         shotTimer = Random.Range(1f, 3f);
 
         //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
-        enemyPosition = Random.Range(2f, 4f);
+        enemyTargetYPosition = Random.Range(2f, 4f);
     }
 
     // Update is called once per frame
@@ -48,7 +40,7 @@ public class Enemy01Controller : EnemyEntity
     private void Stop()
     {
         //Parando o inimigo na posição determinada da tela
-        if (transform.position.y <= enemyPosition)
+        if (transform.position.y <= enemyTargetYPosition)
         {
             enemyRB.velocity = Vector2.down * 0;
             //Informando a variável de controle que o inimigo pode começar a atirar, pois já se posicionou
