@@ -55,7 +55,9 @@ public class Enemy01Controller : EnemyEntity
             if(shotTimer <= 0)
             {
                 shotTimer = Random.Range(2, 3);
-                Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
+                GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
+
+                shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.down * shotSpeed;
             }
         }
     }

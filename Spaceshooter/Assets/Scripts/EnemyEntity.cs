@@ -7,6 +7,8 @@ public class EnemyEntity : MonoBehaviour
     //Variável usada como timer que calcula o tempo de cada disparo
     protected float shotTimer;
 
+    [SerializeField] protected float shotSpeed;
+
     //Variável que determina onde o tiro deve sair
     [SerializeField] protected Transform shotPosition;
 

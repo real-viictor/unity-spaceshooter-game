@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Enemy02Controller : EnemyEntity
 {
-    //Variável que guarda a curva de animação de Spawn, que faz a nave aparecer subitamente e ir reduzindo até o momento desejado
+    //Variável que guarda a curva de animação de Spawn, que faz a nave aparecer subitamente e ir reduzindo até o local desejado
     [SerializeField] private AnimationCurve spawnAnimationCurve;
+
+    [SerializeField] private GameObject enemyShotTarget;
 
     //Variável que guarda a posição inicial do inimigo ao spawnar
     private Vector3 spawnAnimationStartPosition;
@@ -53,12 +55,12 @@ public class Enemy02Controller : EnemyEntity
     // Update is called once per frame
     void Update()
     {
-        Stop();
+        Spawn();
         Shoot();
     }
 
     //Parando o inimigo e permitindo que ele comece a atirar
-    private void Stop()
+    private void Spawn()
     {
         //Quando o inimigo estiver na posição desejada, acione a variável de controle que informa que ele pode atirar
         if (transform.position.y == enemyTargetYPosition)
@@ -86,14 +88,14 @@ public class Enemy02Controller : EnemyEntity
         if (isInPosition)
         {
             //Caso o vetor que determina o início do movimento esteja zerado, atribua a posição atual do inimigo
-            if(movementStartPosition == Vector3.zero)
+            if (movementStartPosition == Vector3.zero)
             {
                 movementStartPosition = transform.position;
             }
 
             //Aumentando o tempo decorrido com deltaTime
             movementAnimationElapsedTime += Time.deltaTime;
-            
+
             //Calculando a porcentagem do decorrer da animação
             float movementAnimationPercentage = movementAnimationElapsedTime / movementAnimationDuration;
 
@@ -112,7 +114,9 @@ public class Enemy02Controller : EnemyEntity
                 //Aleatorizando o tempo que a movimentação durará
                 movementAnimationDuration = Random.Range(3f, 5f);
                 //Atirando
-                Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
+                GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
+
+                shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
     }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShotController : MonoBehaviour
 {   
-    //Velocidade default do tiro
-    [SerializeField] private float shotSpeed = 10f;
-
     [SerializeField] private int shotDamage = 1;
 
     [SerializeField] private GameObject shotExplosion;
@@ -19,9 +16,6 @@ public class ShotController : MonoBehaviour
     {
         //Acessando Rigidbody
         shotRB = GetComponent<Rigidbody2D>();
-
-        //Movendo o tiro baseado na velocidade
-        shotRB.velocity = Vector2.up * shotSpeed;
     }
 
     // Update is called once per frame
@@ -51,5 +45,15 @@ public class ShotController : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);
         }
+    }
+
+    public void changeSpeed(float speed)
+    { 
+
+    }
+
+    public void changeDirection(float direction)
+    {
+
     }
 }

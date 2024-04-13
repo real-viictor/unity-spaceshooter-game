@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject explosion;
 
+    //Velocidade default do tiro
+    [SerializeField] private float shotSpeed = 10f;
+
     //Vida do player
     private int playerHealth = 3;
 
@@ -57,7 +60,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(shotObject, shotPosition.position, Quaternion.identity);
+            GameObject shotInstance = Instantiate(shotObject, shotPosition.position, Quaternion.identity);
+
+            shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
         }
     }
 
