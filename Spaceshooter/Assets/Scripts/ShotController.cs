@@ -8,14 +8,10 @@ public class ShotController : MonoBehaviour
 
     [SerializeField] private GameObject shotExplosion;
 
-    //Variável que guarda o Rigidbody do Player
-    private Rigidbody2D shotRB;
-
     // Start is called before the first frame update
     void Start()
     {
-        //Acessando Rigidbody
-        shotRB = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -45,15 +41,5 @@ public class ShotController : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);
         }
-    }
-
-    public void changeSpeed(float speed)
-    { 
-
-    }
-
-    public void changeDirection(float direction)
-    {
-
     }
 }

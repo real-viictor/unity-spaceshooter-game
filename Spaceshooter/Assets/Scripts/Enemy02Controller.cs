@@ -7,8 +7,6 @@ public class Enemy02Controller : EnemyEntity
     //Variável que guarda a curva de animação de Spawn, que faz a nave aparecer subitamente e ir reduzindo até o local desejado
     [SerializeField] private AnimationCurve spawnAnimationCurve;
 
-    [SerializeField] private GameObject enemyShotTarget;
-
     //Variável que guarda a posição inicial do inimigo ao spawnar
     private Vector3 spawnAnimationStartPosition;
 
@@ -113,10 +111,14 @@ public class Enemy02Controller : EnemyEntity
                 movementStartPosition = transform.position;
                 //Aleatorizando o tempo que a movimentação durará
                 movementAnimationDuration = Random.Range(3f, 5f);
-                //Atirando
+                //Criando a instância do tiro e salvando em uma variável
                 GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
 
-                shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                //Fazendo o inimigo focar o alvo dele no Player
+                var enemyShotTarget = FindObjectOfType<PlayerController>();
+
+                //Fazendo o tiro ir na direção do player, normalizando o vetor e dando a velocidade do tiro atribuída ao inimigo
+                shotInstance.GetComponent<Rigidbody2D>().velocity = (enemyShotTarget.transform.position - shotInstance.transform.position).normalized * shotSpeed;
             }
         }
     }

@@ -60,8 +60,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            //Criando a instância do tiro e salvando na variável
             GameObject shotInstance = Instantiate(shotObject, shotPosition.position, Quaternion.identity);
 
+            //Ajustando a velocidade e direção do tiro
             shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
         }
     }

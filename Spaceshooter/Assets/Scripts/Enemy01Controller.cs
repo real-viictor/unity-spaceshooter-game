@@ -55,8 +55,11 @@ public class Enemy01Controller : EnemyEntity
             if(shotTimer <= 0)
             {
                 shotTimer = Random.Range(2, 3);
+
+                //Salvando a instância do tiro em uma variável
                 GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
 
+                //Determinando a velocidade e direção do tiro
                 shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.down * shotSpeed;
             }
         }
