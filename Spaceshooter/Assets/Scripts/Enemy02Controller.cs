@@ -117,8 +117,13 @@ public class Enemy02Controller : EnemyEntity
                 //Fazendo o inimigo focar o alvo dele no Player
                 var enemyShotTarget = FindObjectOfType<PlayerController>();
 
+                var shotDirection = enemyShotTarget.transform.position - shotInstance.transform.position;
+
                 //Fazendo o tiro ir na direção do player, normalizando o vetor e dando a velocidade do tiro atribuída ao inimigo
-                shotInstance.GetComponent<Rigidbody2D>().velocity = (enemyShotTarget.transform.position - shotInstance.transform.position).normalized * shotSpeed;
+                shotInstance.GetComponent<Rigidbody2D>().velocity = shotDirection.normalized * shotSpeed;
+
+                //Fazendo o tiro "olhar" para o Player
+                shotInstance.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
             }
         }
     }
