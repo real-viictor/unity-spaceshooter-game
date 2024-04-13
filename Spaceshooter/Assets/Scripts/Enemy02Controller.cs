@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy02Controller : EnemyEntity
 {
-    private Rigidbody2D enemyRB;
-
     //Variável que guarda a curva de animação de Spawn, que faz a nave aparecer subitamente e ir reduzindo até o momento desejado
     [SerializeField] private AnimationCurve spawnAnimationCurve;
 
@@ -36,9 +34,6 @@ public class Enemy02Controller : EnemyEntity
     // Start is called before the first frame update
     void Start()
     {
-        //Pegando o RB do inimigo
-        enemyRB = GetComponent<Rigidbody2D>();
-
         //Passando a posição de spawn como a posição inicial da animação
         spawnAnimationStartPosition = transform.position;
 
@@ -117,7 +112,7 @@ public class Enemy02Controller : EnemyEntity
                 //Aleatorizando o tempo que a movimentação durará
                 movementAnimationDuration = Random.Range(3f, 5f);
                 //Atirando
-                Instantiate(enemyShotObject, transform.position, transform.rotation);
+                Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
             }
         }
     }
