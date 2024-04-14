@@ -69,7 +69,7 @@ public class EnemyEntity : MonoBehaviour
             //Setando o valor da variável apenas uma vez
             if (goAwayDirection == 0)
             {
-                //Determinando o lado que o inimigo sairá da tela baseado em onde ele está
+                //Determinando o lado que o inimigo sairá da tela baseado em onde ele está (Ele sairá sempre pelo lado mais próximo possível)
                 goAwayDirection = transform.position.x <= 0 ? 1 : -1;
             }
 

@@ -87,11 +87,14 @@ public class Enemy02Controller : EnemyEntity
     //Atirando quando zerar o timer
     private void Shoot()
     {
+        //Se o inimigo pode atirar e o boss não vai Spawnar, então execute o tiro
         if (canShoot && !gameController.getBossSpawnCondition())
         {
+            //Zerando o timer de delay do tiro
             shotTimer -= Time.deltaTime;
             if (shotTimer <= 0)
             {
+                //Ao zerar, redefina o tiro e execute a ação de atirar
                 shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
 
                 //Fazendo o inimigo focar o alvo dele no Player
