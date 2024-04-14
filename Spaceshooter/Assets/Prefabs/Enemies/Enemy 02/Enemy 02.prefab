@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc4166a5aadf094ba24e566db056e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotTimerMinRange: 1
-  shotTimerMaxRange: 2
+  shotTimerMinRange: 3
+  shotTimerMaxRange: 5
   points: 25
   shotSpeed: 6
   shotPosition: {fileID: 2740774647572999725}

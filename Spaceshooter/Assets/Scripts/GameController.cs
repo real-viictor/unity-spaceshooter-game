@@ -118,15 +118,15 @@ public class GameController : MonoBehaviour
         {
             case 1:
                 pointsToLevelUp = 100;
-                spawnerTimerMaxRange = 5;
-                spawnerTimerMinRange = 3;
-                spawnerMaxSimultaneousSpawns = 1;
+                spawnerTimerMaxRange = 4;
+                spawnerTimerMinRange = 2;
+                spawnerMaxSimultaneousSpawns = 2;
                 spawnerMinSimultaneousSpawns = 1;
                 break;
             case 2:
                 pointsToLevelUp = 250;
-                spawnerTimerMaxRange = 4;
-                spawnerTimerMinRange = 2;
+                spawnerTimerMaxRange = 3;
+                spawnerTimerMinRange = 1;
                 spawnerMaxSimultaneousSpawns = 3;
                 spawnerMinSimultaneousSpawns = 1;
                 enemy02SpawnRate = 0.15f;
@@ -135,7 +135,7 @@ public class GameController : MonoBehaviour
                 pointsToLevelUp = 500;
                 spawnerTimerMaxRange = 3;
                 spawnerTimerMinRange = 0.5f;
-                spawnerMaxSimultaneousSpawns = 4;
+                spawnerMaxSimultaneousSpawns = 6;
                 spawnerMinSimultaneousSpawns = 2;
                 enemy02SpawnRate = 0.25f;
                 break;
