@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float shotSpeed = 10f;
 
     //Vida do player
-    private int playerHealth = 3;
+    [SerializeField] private int playerHealth = 3;
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed;

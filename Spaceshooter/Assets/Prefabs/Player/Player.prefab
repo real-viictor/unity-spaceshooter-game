@@ -158,6 +158,8 @@ MonoBehaviour:
   shotObject: {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
   shotPosition: {fileID: 8992668360445977902}
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
+  shotSpeed: 10
+  playerHealth: 3
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4
@@ -217,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0033330917, y: 0.08077246}
+  m_Offset: {x: 0.006652564, y: 0.044258267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -228,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1133285, y: 0.86822426}
+  m_Size: {x: 0.37640542, y: 0.84830743}
   m_EdgeRadius: 0
 --- !u!1 &7763580671888918115
 GameObject:

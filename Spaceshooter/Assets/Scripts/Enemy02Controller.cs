@@ -1,116 +1,98 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy02Controller : EnemyEntity
 {
-    //Variável que guarda a curva de animação de Spawn, que faz a nave aparecer subitamente e ir reduzindo até o local desejado
-    [SerializeField] private AnimationCurve spawnAnimationCurve;
+    //Variável que controla a direção
+    private int movementDirection;
 
-    //Variável que guarda a posição inicial do inimigo ao spawnar
-    private Vector3 spawnAnimationStartPosition;
+    //Variável que controla para que lado o inimigo está indo
+    private bool isMovingLeft;
 
-    //Variável que guarda a posição final desejada de Spawn que o inimigo deve parar
-    private Vector3 spawnAnimationEndPosition;
-
-    //Variável que determina a duração da animação de Spawn
-    private float spawnAnimationDuration = 2f;
-
-    //Variável que é usada para calcular o tempo que a animação de Spawn está durando 
-    private float spawnAnimationElapsedTime;
-
-    //Duração total da animação de movimentação antes do disparo
-    private float movementAnimationDuration;
-
-    //Variável que guarda o tempo decorrido da animação de se mover para atirar
-    private float movementAnimationElapsedTime;
-
-    //Vector3 que guarda a posição inicial do inimigo ao se mover para atirar 
-    private Vector3 movementStartPosition;
-
-    //Variável que controlará a posição alvo que o inimigo deverá chegar ao se movimentar antes de trocar de direção
-    private float enemyTargetXPosition;
+    //Variável que diz para o inimigo até onde ele deve ir
+    private int enemyTargetXPosition = 8;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Passando a posição de spawn como a posição inicial da animação
-        spawnAnimationStartPosition = transform.position;
+        //Pegando o RB do inimigo
+        enemyRB = GetComponent<Rigidbody2D>();
+
+        //Localizando o gameObject que controla o jogo
+        gameController = FindObjectOfType<GameController>();
+
+        //Determinando velocidade do inimigo
+        enemyRB.velocity = Vector3.down * enemySpeed;
 
         //Determinando a posição que o inimigo deve parar, para fim de efeito visual de um alinhamento menos preciso na horda de inimigos
         enemyTargetYPosition = Random.Range(0.5f, 4.5f);
 
-        //Definindo o primeiro lado que o inimigo vai se mover
-        enemyTargetXPosition = 8f * (Random.Range(0, 2) * 2 - 1);
+        //Determinando o lado que o inimigo irá inicialmente
+        movementDirection = Random.Range(0, 2) * 2 - 1;
 
-        //Passando a variável randomizada como posição final do inimigo, junto com o X onde ele spawnou
-        spawnAnimationEndPosition = new Vector3(transform.position.x, enemyTargetYPosition);
+        isMovingLeft = movementDirection == -1 ? true : false;
 
-        //Definindo a velocidade da movimentação do inimigo quando ele começar a atirar
-        movementAnimationDuration = Random.Range(3f, 5f);
+        //Aleatorizando o primeiro tiro
+        shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
     }
 
     // Update is called once per frame
     void Update()
     {
         Spawn();
+        MoveAround();
         Shoot();
+        GoAway();
     }
 
     //Parando o inimigo e permitindo que ele comece a atirar
     private void Spawn()
     {
-        //Quando o inimigo estiver na posição desejada, acione a variável de controle que informa que ele pode atirar
-        if (transform.position.y == enemyTargetYPosition)
+        //Se ele chegou na altura desejada, então zere a velocidade dele e informe que ele pode começar a atirar
+        if (transform.position.y <= enemyTargetYPosition)
         {
-            isInPosition = true;
-        }
-        //Caso contrário, realize a animação de entrada
-        else
-        {
-            //Somando o deltaTime ao tempo decorrido da animação
-            spawnAnimationElapsedTime += Time.deltaTime;
-
-            //Variável que guarda o % que a animação já está, baseada no tempo que levou / tempo máximo
-            float spawnAnimationPercentage = spawnAnimationElapsedTime / spawnAnimationDuration;
-
-            //Movendo o player usando Lerp, de maneira suave, respeitando a curva de animação definida baseada no decorrer da animação
-            transform.position = Vector3.Lerp(spawnAnimationStartPosition, spawnAnimationEndPosition, spawnAnimationCurve.Evaluate(spawnAnimationPercentage));
+            enemyRB.velocity = Vector3.zero;
+            canShoot = true;
         }
     }
 
-    //Quando em posição, se movimentar para os lados e atirar toda vez que chegar no extremo da tela
-    private void Shoot()
+    //Função que move o inimigo de um lado para o outro
+    private void MoveAround()
     {
-        //Quando o inimigo estiver na posição certa, comece a movimentação e os disparos
-        if (isInPosition)
+        //Se o inimigo já pode atirar, então permita que ele comece a se mover para os lados
+        if (canShoot)
         {
-            //Caso o vetor que determina o início do movimento esteja zerado, atribua a posição atual do inimigo
-            if (movementStartPosition == Vector3.zero)
+            //Determinando se o inimigo está indo para a esquerda ou para a direita
+            if (transform.position.x <= -enemyTargetXPosition) isMovingLeft = false;
+            else if (transform.position.x >= enemyTargetXPosition) isMovingLeft = true;
+
+            //Mudando de direção dependendo da direção que ele vai
+            if (isMovingLeft)
             {
-                movementStartPosition = transform.position;
+                movementDirection = 1;
+            }
+            else
+            {
+                movementDirection = -1;
             }
 
-            //Aumentando o tempo decorrido com deltaTime
-            movementAnimationElapsedTime += Time.deltaTime;
+            //Atualizando a velocidade do inimigo para mudá-lo de direção
+            enemyRB.velocity = Vector2.left * enemySpeed * movementDirection;
+        }
+    }
 
-            //Calculando a porcentagem do decorrer da animação
-            float movementAnimationPercentage = movementAnimationElapsedTime / movementAnimationDuration;
-
-            //Movimentando o inimigo utilizando lerp para suavizar o movimento
-            transform.position = Vector3.Lerp(movementStartPosition, new Vector3(enemyTargetXPosition, transform.position.y), Mathf.SmoothStep(0, 1, movementAnimationPercentage));
-
-            //Se o inimigo chegou no canto do mapa, então faça-o ir para outro
-            if (transform.position.x == enemyTargetXPosition)
+    //Atirando quando zerar o timer
+    private void Shoot()
+    {
+        if (canShoot && !gameController.getBossSpawnCondition())
+        {
+            shotTimer -= Time.deltaTime;
+            if (shotTimer <= 0)
             {
-                //invertendo o sinal de X para ir ao outro extremo do mapa
-                enemyTargetXPosition *= -1;
-                //Zerando o tempo decorrido da animação
-                movementAnimationElapsedTime = 0;
-                //Redefinindo o novo ponto de partida do inimigo
-                movementStartPosition = transform.position;
-                //Aleatorizando o tempo que a movimentação durará
-                movementAnimationDuration = Random.Range(3f, 5f);
+                shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
 
                 //Fazendo o inimigo focar o alvo dele no Player
                 var enemyShotTarget = FindObjectOfType<PlayerController>();
@@ -130,8 +112,7 @@ public class Enemy02Controller : EnemyEntity
                     //NOTE: A soma de +90 é para compensar a Sprite
                     shotInstance.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
                 }
-                
             }
-        }
+        }   
     }
 }

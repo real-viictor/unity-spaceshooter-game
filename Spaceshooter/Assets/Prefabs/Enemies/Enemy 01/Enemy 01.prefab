@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb6c4f499336e845b9904e14a5ca1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotTimerMinRange: 2
+  shotTimerMaxRange: 3
+  points: 10
   shotSpeed: 5
   shotPosition: {fileID: 4579557433346775272}
   enemyShotObject: {fileID: 421518273685639958, guid: 04da6dc87ad41864383e99d9e7c042ab, type: 3}

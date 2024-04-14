@@ -7,6 +7,22 @@ public class EnemyEntity : MonoBehaviour
     //Variável usada como timer que calcula o tempo de cada disparo
     protected float shotTimer;
 
+    //Variável para pegar o RB dos inimigos, herdada do pai
+    protected Rigidbody2D enemyRB;
+
+    //Variável para pegar o gameController do jogo, herdada do pai
+    protected GameController gameController;
+
+    //Intervalo mínimo do disparo do inimigo
+    [SerializeField] protected int shotTimerMinRange;
+
+    //Intervalo máximo do disparo do inimigo
+    [SerializeField] protected int shotTimerMaxRange;
+
+    //Pontos que o inimigo dará ao morrer
+    [SerializeField] protected int points;
+
+    //Velocidade do tiro
     [SerializeField] protected float shotSpeed;
 
     //Variável que determina onde o tiro deve sair
@@ -25,10 +41,12 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] protected int enemyHealth;
 
     //Variável de controle que informa ao script se o inimigo deve parar de se mover
-    protected bool isInPosition = false;
+    protected bool canShoot = false;
 
     //Variável que guardará onde o inimigo ficará posicionado na tela
     protected float enemyTargetYPosition;
+
+    protected int goAwayDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +57,37 @@ public class EnemyEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
+    //Função que tira os inimigos vivos da tela quando o boss estiver chegando
+    protected void GoAway()
+    {
+        //Verificando se o boss pode vir
+        if (gameController.getBossSpawnCondition())
+        {
+            //Setando o valor da variável apenas uma vez
+            if (goAwayDirection == 0)
+            {
+                //Determinando o lado que o inimigo sairá da tela baseado em onde ele está
+                goAwayDirection = transform.position.x <= 0 ? 1 : -1;
+            }
+
+            //Impedindo o inimigo de atirar enquanto sai
+            canShoot = false;
+
+            //Fazendo a velocidade dele ser lateral e ir para a direção mais próxima do fim da tela
+            enemyRB.velocity = Vector2.left * enemySpeed * goAwayDirection;
+
+            //Se o inimigo sair da área da tela, destrua ele
+            if(!GetComponentInChildren<SpriteRenderer>().isVisible)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    //Tirando vida do inimigo e matando-o se necessário
     public void LoseHealth(int damage)
     {
         //Reduzindo a vida baseado no dano
@@ -52,6 +98,7 @@ public class EnemyEntity : MonoBehaviour
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            gameController.AddPoints(points);
         }
     }
 }
