@@ -59,6 +59,7 @@ public class Enemy02Controller : EnemyEntity
         }
     }
 
+
     //Função que move o inimigo de um lado para o outro
     private void MoveAround()
     {
@@ -83,6 +84,7 @@ public class Enemy02Controller : EnemyEntity
             enemyRB.velocity = Vector2.left * enemySpeed * movementDirection;
         }
     }
+
 
     //Atirando quando zerar o timer
     private void Shoot()
