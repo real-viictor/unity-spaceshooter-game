@@ -294,8 +294,12 @@ PrefabInstance:
       value: Shot Position
       objectReference: {fileID: 0}
     - target: {fileID: 8378893109034793064, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
-      propertyPath: playerHealth
+      propertyPath: entityHealth
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378893109034793064, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
+      propertyPath: playerHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

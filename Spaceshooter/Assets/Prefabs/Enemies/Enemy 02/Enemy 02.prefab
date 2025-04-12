@@ -216,13 +216,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc4166a5aadf094ba24e566db056e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityHealth: 3
+  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   shotTimerMinRange: 3
   shotTimerMaxRange: 5
   points: 25
   shotSpeed: 6
   shotPosition: {fileID: 2740774647572999725}
   enemyShotObject: {fileID: 8953927879069231380, guid: 99fc9f3d1b4346c43839578fa38245e9, type: 3}
-  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   enemySpeed: 4
   enemyHealth: 3
 --- !u!1 &8169797047732513755

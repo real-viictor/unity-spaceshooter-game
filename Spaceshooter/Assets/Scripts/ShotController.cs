@@ -31,15 +31,8 @@ public class ShotController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
         Instantiate(shotExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
-
-        if (collision.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<EnemyEntity>().LoseHealth(shotDamage);
-        }else
-        {
-            collision.gameObject.GetComponent<PlayerController>().LoseHealth(shotDamage);
-        }
     }
 }

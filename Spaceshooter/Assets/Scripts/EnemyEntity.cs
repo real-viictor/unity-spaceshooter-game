@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEntity : MonoBehaviour
+public class EnemyEntity : Entity
 {
     //Variável usada como timer que calcula o tempo de cada disparo
     protected float shotTimer;
@@ -30,9 +30,6 @@ public class EnemyEntity : MonoBehaviour
 
     //Objeto do tiro, que é instanciado na função Shoot()
     [SerializeField] protected GameObject enemyShotObject;
-
-    //Variável que guarda o prefab de explosão do inimigo
-    [SerializeField] protected GameObject explosion;
 
     //Velocidade padrão do inimigo
     [SerializeField] protected float enemySpeed;
@@ -88,17 +85,9 @@ public class EnemyEntity : MonoBehaviour
     }
 
     //Tirando vida do inimigo e matando-o se necessário
-    public void LoseHealth(int damage)
+    public override void LoseHealth(int damage)
     {
-        //Reduzindo a vida baseado no dano
-        enemyHealth -= damage;
-
-        //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
-        if (enemyHealth <= 0)
-        {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            gameController.AddPoints(points);
-        }
+        base.LoseHealth(damage);
+        gameController.AddPoints(points);
     }
 }

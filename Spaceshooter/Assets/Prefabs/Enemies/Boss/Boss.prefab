@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6504647733596468384}
   - component: {fileID: 7528612839908188935}
   - component: {fileID: 2679447654934301507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,9 +117,9 @@ GameObject:
   - component: {fileID: 6852216026480688342}
   - component: {fileID: 1655590663399014942}
   - component: {fileID: 8145062027713158542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
