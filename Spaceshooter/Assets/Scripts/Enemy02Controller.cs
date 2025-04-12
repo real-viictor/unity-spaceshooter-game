@@ -42,14 +42,14 @@ public class Enemy02Controller : EnemyEntity
     // Update is called once per frame
     void Update()
     {
-        Spawn();
+        Position();
         MoveAround();
         Shoot();
         GoAway();
     }
 
     //Parando o inimigo e permitindo que ele comece a atirar
-    private void Spawn()
+    private void Position()
     {
         //Se ele chegou na altura desejada, então zere a velocidade dele e informe que ele pode começar a atirar
         if (transform.position.y <= enemyTargetYPosition)

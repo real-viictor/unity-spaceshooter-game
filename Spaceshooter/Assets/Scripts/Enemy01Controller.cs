@@ -26,13 +26,13 @@ public class Enemy01Controller : EnemyEntity
     // Update is called once per frame
     void Update()
     {
-        Spawn();
+        Position();
         Shoot();
         GoAway();
     }
 
     //Para o inimigo na altura da tela desejada
-    private void Spawn()
+    private void Position()
     {
         //Parando o inimigo na posição determinada da tela
         if (transform.position.y <= enemyTargetYPosition)
