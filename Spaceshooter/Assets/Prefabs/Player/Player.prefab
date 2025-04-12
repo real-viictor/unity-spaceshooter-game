@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4da31ed78062264f843ff1e95062b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityHealth: 3
+  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   playerSpeed: 5
   shotObject: {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
   shotPosition: {fileID: 8992668360445977902}
-  explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   shotSpeed: 10
-  playerHealth: 3
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4
