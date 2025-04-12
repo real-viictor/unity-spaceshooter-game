@@ -91,9 +91,9 @@ public class EnemyEntity : Entity
         gameController.AddPoints(points);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("MainPlayer"))
+        if (collision.gameObject.CompareTag("MainPlayer"))
         {
             collision.gameObject.GetComponent<Entity>().LoseHealth(2);
             Instantiate(explosion, transform.position, Quaternion.identity);
