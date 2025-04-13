@@ -52,11 +52,12 @@ public class PlayerController : Entity
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
         playerRB.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
 
-        // Limita a posição do jogador nos limites da tela
+        //Limita a posição do jogador nos limites da tela
         float clampedX = Mathf.Clamp(playerRB.position.x, -hLimitPosition, hLimitPosition);
         float clampedY = Mathf.Clamp(playerRB.position.y, -vLimitPosition, vLimitPosition);
 
-        // Atualiza a posição travada
+        //Atualiza a posição travada
+        //NOTE: Utiliza-se a transform.position para evitar "flicks" causados pela física aplicada em playerRB
         transform.position = new Vector2(clampedX, clampedY);
     }
 
