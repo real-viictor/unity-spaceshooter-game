@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    //Variável que guarda a vida da entidade
     [SerializeField] protected int entityHealth;
 
     //Variável que guarda o prefab de explosão do inimigo
@@ -20,6 +21,8 @@ public class Entity : MonoBehaviour
     {
         
     }
+
+    //Função que causa dano na entidade
     public virtual void LoseHealth(int damage)
     {
         //Reduzindo a vida baseado no dano

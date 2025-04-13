@@ -7,10 +7,10 @@ public class EnemyEntity : Entity
     //Variável usada como timer que calcula o tempo de cada disparo
     protected float shotTimer;
 
-    //Variável para pegar o RB dos inimigos, herdada do pai
+    //Variável para pegar o RB dos inimigos
     protected Rigidbody2D enemyRB;
 
-    //Variável para pegar o gameController do jogo, herdada do pai
+    //Variável para pegar o gameController do jogo
     protected GameController gameController;
 
     //Intervalo mínimo do disparo do inimigo
@@ -84,15 +84,17 @@ public class EnemyEntity : Entity
         }
     }
 
-    //Tirando vida do inimigo e matando-o se necessário
+    //Tirando vida do inimigo e matando-o se necessário - Herdada da classe pai das entidades e sobrescrita para adicionar pontos ao jogador
     public override void LoseHealth(int damage)
     {
         base.LoseHealth(damage);
         gameController.AddPoints(points);
     }
 
+    //Detectando colisão de inimigos com o Player
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Checando a tag do objeto que colidiu, se for o player, então cause dano nele e se destrua
         if (collision.gameObject.CompareTag("MainPlayer"))
         {
             collision.gameObject.GetComponent<Entity>().LoseHealth(2);

@@ -31,7 +31,7 @@ public class Enemy01Controller : EnemyEntity
         GoAway();
     }
 
-    //Para o inimigo na altura da tela desejada
+    //Função que posiciona o inimigo na altura da tela desejada
     private void TakePosition()
     {
         //Parando o inimigo na posição determinada da tela
