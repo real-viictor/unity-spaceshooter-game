@@ -122,6 +122,7 @@ public class GameController : MonoBehaviour
                 spawnerTimerMinRange = 2;
                 spawnerMaxSimultaneousSpawns = 2;
                 spawnerMinSimultaneousSpawns = 1;
+                enemy02SpawnRate = 0f;
                 break;
             case 2:
                 pointsToLevelUp = 250;

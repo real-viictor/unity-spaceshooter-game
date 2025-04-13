@@ -20,8 +20,11 @@ public class PlayerController : Entity
     [SerializeField] private float shotSpeed = 10f;
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
-    private float horizontalSpeed;
-    private float verticalSpeed;
+    private float horizontalSpeed, verticalSpeed;
+
+    //Variáveis que guardam o limite que o jogador pode chegar na tela
+    private float hLimitPosition = 8.7f;
+    private float vLimitPosition = 4.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,13 @@ public class PlayerController : Entity
         //adicionando velocidade pela variável velocity do Rigidbody, normalizando movimento vertical e multiplicando pela velocidade padrão do player
         //NOTE: O rigidbody já ajusta pelo Time.DeltaTime
         playerRB.velocity = new Vector2(horizontalSpeed, verticalSpeed).normalized * playerSpeed;
+
+        // Limita a posição do jogador nos limites da tela
+        float clampedX = Mathf.Clamp(playerRB.position.x, -hLimitPosition, hLimitPosition);
+        float clampedY = Mathf.Clamp(playerRB.position.y, -vLimitPosition, vLimitPosition);
+
+        // Atualiza a posição travada
+        transform.position = new Vector2(clampedX, clampedY);
     }
 
     //Disparando com o Player
