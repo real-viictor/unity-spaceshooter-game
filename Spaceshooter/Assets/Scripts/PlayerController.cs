@@ -13,6 +13,9 @@ public class PlayerController : Entity
     //Variável que contém o objeto do tiro
     [SerializeField] private GameObject shotObject;
 
+    //Variável que guarda o segundo tiro
+    [SerializeField] private GameObject upgradedShotObject;
+
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
 
