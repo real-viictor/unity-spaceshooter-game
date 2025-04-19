@@ -11,10 +11,7 @@ public class PlayerController : Entity
     [SerializeField] private float playerSpeed = 5f;
 
     //Variável que contém o objeto do tiro
-    [SerializeField] private GameObject shotObject;
-
-    //Variável que guarda o segundo tiro
-    [SerializeField] private GameObject upgradedShotObject;
+    [SerializeField] private GameObject[] shotObjects;
 
     //Variável que determina onde o tiro deve sair
     [SerializeField] private Transform shotPosition;
@@ -72,16 +69,8 @@ public class PlayerController : Entity
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject createdShot = null;
-            if(shotLevel == 1)
-            {
-                createdShot = shotObject;
-            } else if (shotLevel == 2)
-            {
-                createdShot = upgradedShotObject;
-            }
             //Criando a instância do tiro e salvando na variável
-            GameObject shotInstance = Instantiate(createdShot, shotPosition.position, Quaternion.identity);
+            GameObject shotInstance = Instantiate(shotObjects[shotLevel-1], shotPosition.position, Quaternion.identity);
             //Ajustando a velocidade e direção do tiro
             shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
         }

@@ -157,8 +157,9 @@ MonoBehaviour:
   entityHealth: 3
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   playerSpeed: 5
-  shotObject: {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
-  upgradedShotObject: {fileID: 8721464784458509772, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
+  shotObjects:
+  - {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
+  - {fileID: 8721464784458509772, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
   shotPosition: {fileID: 8992668360445977902}
   shotSpeed: 10
   shotLevel: 1
