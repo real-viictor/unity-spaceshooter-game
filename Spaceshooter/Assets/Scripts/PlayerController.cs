@@ -10,11 +10,11 @@ public class PlayerController : Entity
     //Determinando velocidade do player
     [SerializeField] private float playerSpeed = 5f;
 
-    //Variável que contém o objeto do tiro
+    //Variável que contém os objetos dos tiros (Baseado em niveis)
     [SerializeField] private GameObject[] shotObjects;
 
-    //Variável que determina onde o tiro deve sair
-    [SerializeField] private Transform shotPosition;
+    //TODO: Refazer comentário
+    [SerializeField] private Transform[] shotPositions;
 
     //Velocidade default do tiro
     [SerializeField] private float shotSpeed = 10f;
@@ -24,6 +24,9 @@ public class PlayerController : Entity
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
+
+    //Variável de controle que faz o player atirar pela esquerda no nível 2 de tiro
+    private int shootingFromLeft = 0;
 
     //Variáveis que guardam o limite que o jogador pode chegar na tela
     private float hLimitPosition = 8.7f;
@@ -68,9 +71,18 @@ public class PlayerController : Entity
     private void Shoot()
     {
         if (Input.GetButtonDown("Fire1"))
-        {
-            //Criando a instância do tiro e salvando na variável
-            GameObject shotInstance = Instantiate(shotObjects[shotLevel-1], shotPosition.position, Quaternion.identity);
+        { 
+
+            if (shotLevel == 2)
+            {
+                shootingFromLeft ^= 1;
+            } else
+            {
+                shootingFromLeft = 0;
+            }
+            
+            //Criando a instância do tiro (baseado no nível do player) e salvando na variável
+            GameObject shotInstance = Instantiate(shotObjects[shotLevel-1], shotPositions[shotLevel-1+shootingFromLeft].position, Quaternion.identity);
             //Ajustando a velocidade e direção do tiro
             shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
         }
