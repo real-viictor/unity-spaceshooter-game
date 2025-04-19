@@ -7,13 +7,14 @@ public class PlayerController : Entity
 {
     //Instanciando variável que contém o Rigidbody do player
     private Rigidbody2D playerRB;
+
     //Determinando velocidade do player
     [SerializeField] private float playerSpeed = 5f;
 
-    //Variável que contém os objetos dos tiros (Baseado em niveis)
+    //Variável em Array que contém os objetos dos tiros (Baseado em niveis)
     [SerializeField] private GameObject[] shotObjects;
 
-    //TODO: Refazer comentário
+    //Variável em Array que guarda todas as posições de origem dos tiros
     [SerializeField] private Transform[] shotPositions;
 
     //Velocidade default do tiro
