@@ -171,21 +171,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2362409855678227170, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.429
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362409855678227170, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938991534010546657, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7011186517207533850, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378893109034793064, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
+      propertyPath: shotLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
