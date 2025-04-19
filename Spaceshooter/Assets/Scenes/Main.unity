@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &226638307
+--- !u!1001 &1581444403
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6384198543817414019, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.721998
+      value: -5.9328947
       objectReference: {fileID: 0}
     - target: {fileID: 6384198543817414019, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7671695
+      value: -0.01899904
       objectReference: {fileID: 0}
     - target: {fileID: 6384198543817414019, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
       propertyPath: m_LocalPosition.z
@@ -176,8 +176,7 @@ PrefabInstance:
       value: Shot (Upgraded)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1444158218704221567, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea561b6d49edef942b39ed31e4cda900, type: 3}
@@ -445,4 +444,4 @@ SceneRoots:
   - {fileID: 618452692581450021}
   - {fileID: 1615089644}
   - {fileID: 478679510580557644}
-  - {fileID: 226638307}
+  - {fileID: 1581444403}

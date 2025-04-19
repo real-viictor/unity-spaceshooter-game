@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 616170367696502448}
   - component: {fileID: 1049860070875835916}
   - component: {fileID: 7969930029907264657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6384198543817414019}
   - component: {fileID: 1622774531262447227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shot (Upgraded)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
