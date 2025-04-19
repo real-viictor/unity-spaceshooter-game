@@ -19,6 +19,9 @@ public class PlayerController : Entity
     //Velocidade default do tiro
     [SerializeField] private float shotSpeed = 10f;
 
+    //Nível do tiro do Player
+    [SerializeField] private int shotLevel = 1;
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
 
