@@ -88,7 +88,11 @@ public class EnemyEntity : Entity
     public override void LoseHealth(int damage)
     {
         base.LoseHealth(damage);
-        gameController.AddPoints(points);
+        if(entityHealth <= 0)
+        {
+            gameController.AddPoints(points);
+            gameController.SpawnPowerUps(transform.position);
+        }
     }
 
     //Detectando colisão de inimigos com o Player

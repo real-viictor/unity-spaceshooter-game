@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class GameController : MonoBehaviour
     //Recebe os objetos dos inimigos
     [SerializeField] private GameObject enemy01Object;
     [SerializeField] private GameObject enemy02Object;
+
+    //Recebe os objetos dos Power Ups
+    [SerializeField] private GameObject shotPowerUpObject;
+    [SerializeField] private GameObject healthPowerUpObject;
 
     //Variável do timer que controla quando o nível poderá começar
     private float levelStartTimer;
@@ -25,19 +30,22 @@ public class GameController : MonoBehaviour
     private bool isLevelStarted;
 
     //Variáveis de range mínimo e máximo para Spawnar inimigos simultaneamente
-    private int spawnerMaxSimultaneousSpawns;
-    private int spawnerMinSimultaneousSpawns;
+    private int enemySpawnerMaxSimultaneousSpawns, enemySpawnerMinSimultaneousSpawns;
 
     //Variável que controla o timer do spawner de inimigos
-    private float spawnerTimer;
-    private float spawnerTimerMinRange;
-    private float spawnerTimerMaxRange;
+    private float enemySpawnerTimer, enemySpawnerTimerMinRange, enemySpawnerTimerMaxRange;
 
     //Spawn rate do inimigo 2
     private float enemy02SpawnRate;
 
     //Informa ao Script se o boss pode nascer
     private bool canSpawnBoss;
+
+    //Spawn Rate de cada criação de Power Ups
+    private float shotPowerUpSpawnChance, healthPowerUpSpawnChance;
+
+    //Chance de Spawn dos Power Ups
+    private float powerUpSpawnChance;
 
     // Start is called before the first frame update
     void Start()
@@ -74,16 +82,16 @@ public class GameController : MonoBehaviour
     private void SpawnCommomEnemies()
     {
         //reduz o timer de spawn até zero
-        spawnerTimer -= Time.deltaTime;
+        enemySpawnerTimer -= Time.deltaTime;
 
         //Ao zerar, redefine o timer e spawna um inimigo
-        if (spawnerTimer <= 0)
+        if (enemySpawnerTimer <= 0)
         {
             //Redefinindo o timer
-            spawnerTimer = Random.Range(spawnerTimerMinRange, spawnerTimerMaxRange);
+            enemySpawnerTimer = Random.Range(enemySpawnerTimerMinRange, enemySpawnerTimerMaxRange);
 
             //Aleatorizando quantos inimigos nascerão de uma vez
-            int simultaneousSpawns = Random.Range(spawnerMinSimultaneousSpawns, spawnerMaxSimultaneousSpawns + 1);
+            int simultaneousSpawns = Random.Range(enemySpawnerMinSimultaneousSpawns, enemySpawnerMaxSimultaneousSpawns + 1);
 
             //Dependendo de quantos inimigos devem ser spawnados por vez, execute esse comando em loop até a quantidade determinada pela variável anterior
             for (int i = 0; i < simultaneousSpawns; i++)
@@ -118,27 +126,33 @@ public class GameController : MonoBehaviour
         {
             case 1:
                 pointsToLevelUp = 100;
-                spawnerTimerMaxRange = 4;
-                spawnerTimerMinRange = 2;
-                spawnerMaxSimultaneousSpawns = 2;
-                spawnerMinSimultaneousSpawns = 1;
+                enemySpawnerTimerMaxRange = 4;
+                enemySpawnerTimerMinRange = 2;
+                enemySpawnerMaxSimultaneousSpawns = 2;
+                enemySpawnerMinSimultaneousSpawns = 1;
                 enemy02SpawnRate = 0f;
+                shotPowerUpSpawnChance = 0f;
+                healthPowerUpSpawnChance = 0f;
                 break;
             case 2:
                 pointsToLevelUp = 250;
-                spawnerTimerMaxRange = 3;
-                spawnerTimerMinRange = 1;
-                spawnerMaxSimultaneousSpawns = 3;
-                spawnerMinSimultaneousSpawns = 1;
+                enemySpawnerTimerMaxRange = 3;
+                enemySpawnerTimerMinRange = 1;
+                enemySpawnerMaxSimultaneousSpawns = 3;
+                enemySpawnerMinSimultaneousSpawns = 1;
                 enemy02SpawnRate = 0.15f;
+                shotPowerUpSpawnChance = 0.1f;
+                healthPowerUpSpawnChance = 0.05f;
                 break;
             case 3:
                 pointsToLevelUp = 500;
-                spawnerTimerMaxRange = 3;
-                spawnerTimerMinRange = 0.5f;
-                spawnerMaxSimultaneousSpawns = 6;
-                spawnerMinSimultaneousSpawns = 2;
-                enemy02SpawnRate = 0.25f;
+                enemySpawnerTimerMaxRange = 3;
+                enemySpawnerTimerMinRange = 0.5f;
+                enemySpawnerMaxSimultaneousSpawns = 6;
+                enemySpawnerMinSimultaneousSpawns = 2;
+                enemy02SpawnRate = 0.3f;
+                shotPowerUpSpawnChance = 0.3f;
+                healthPowerUpSpawnChance = 0.2f;
                 break;
             case 4:
                 canSpawnBoss = true;
@@ -182,5 +196,18 @@ public class GameController : MonoBehaviour
     public bool getBossSpawnCondition()
     {
         return canSpawnBoss;
+    }
+
+    public void SpawnPowerUps(Vector3 position)
+    { 
+        powerUpSpawnChance = Random.Range(0f, 1f);
+
+        if(powerUpSpawnChance <= shotPowerUpSpawnChance)
+        {
+            Instantiate(shotPowerUpObject, position, Quaternion.identity);
+        } else if(powerUpSpawnChance <= healthPowerUpSpawnChance)
+        {
+            Instantiate(healthPowerUpObject, position, Quaternion.identity);
+        }
     }
 }

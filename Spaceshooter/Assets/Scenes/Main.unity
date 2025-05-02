@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044352157100814151, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.38
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1044352157100814151, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -249,10 +249,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1771159567826981902, guid: dee83c1f41aad874c8b5090dea7bb1a1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1950338931488543673, guid: dee83c1f41aad874c8b5090dea7bb1a1, type: 3}
       propertyPath: m_Name
       value: Game
