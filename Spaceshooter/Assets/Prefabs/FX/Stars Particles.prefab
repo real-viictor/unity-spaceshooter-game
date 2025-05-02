@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4965615721229624822}
   - component: {fileID: 8588595311445767049}
   - component: {fileID: 9070306931944783174}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stars Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

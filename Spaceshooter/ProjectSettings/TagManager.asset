@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - MainPlayer
   - Boss
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Player
   - Player Shots
   - Enemies Shots
+  - Power Ups
   - FX
-  - 
   - 
   - 
   - 
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 3267950413
+    locked: 0
+  - name: Power Ups
+    uniqueID: 2076380385
     locked: 0
   - name: Player
     uniqueID: 194440047

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2091627301250857211}
   - component: {fileID: 888755310478959324}
   - component: {fileID: 6297377974012459728}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2076380385
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1384762909, guid: 28e425903acc538479d0b385c20e8882, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,9 +116,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4038354000098999919}
   - component: {fileID: 3533434172191062140}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Power Up
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
