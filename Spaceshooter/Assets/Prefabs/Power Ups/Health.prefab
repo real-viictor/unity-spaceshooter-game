@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7, y: 0.64}
+  m_Size: {x: 0.4, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4309268590238009496}
   - component: {fileID: 8594982881253219940}
+  - component: {fileID: 4440780832352504593}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -129,3 +130,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d117c91cd69d841bc945034daecd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4440780832352504593
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397598810626252305}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6c16aeace9057042a89702a462b9afa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
