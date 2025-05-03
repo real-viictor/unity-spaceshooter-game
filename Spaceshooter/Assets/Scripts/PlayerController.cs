@@ -97,7 +97,6 @@ public class PlayerController : Entity
         if(shotLevel == 2)
         {
             upgradedShotTimer -= Time.deltaTime;
-            Debug.Log(upgradedShotTimer);
 
             if (upgradedShotTimer <= 0)
             {
