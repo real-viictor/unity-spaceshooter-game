@@ -47,7 +47,7 @@ public class PlayerController : Entity
     {
         Move();
         Shoot();
-        UpgradedShot();
+        ReducePowerUpDuration();
     }
 
     //Movendo o Player
@@ -92,7 +92,7 @@ public class PlayerController : Entity
         }
     }
 
-    private void UpgradedShot()
+    private void ReducePowerUpDuration()
     {
         if(shotLevel == 2)
         {

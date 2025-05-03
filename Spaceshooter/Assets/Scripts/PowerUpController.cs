@@ -12,6 +12,14 @@ public class PowerUpController : MonoBehaviour
     private float spawnMoveDuration = 4f; 
     private float spawnMoveElapsedTime = 0f;
 
+    private float powerUpDuration = 6f;
+    private float timer = 0f;
+
+    private float blinkTimer = 0f;
+    private float blinkInterval = 0.2f;
+
+    private Renderer rend;
+
     [SerializeField] private string powerUpEffect;
 
     private bool isMoving = true;
@@ -19,8 +27,8 @@ public class PowerUpController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rend = GetComponentInChildren<Renderer>();
         startPosition = transform.position;
-
         positionX = Random.Range(-8f,8f);
         positionY = Random.Range(-0.5f, -4.5f);
         targetPosition = new Vector3(positionX, positionY, 0);
@@ -30,6 +38,7 @@ public class PowerUpController : MonoBehaviour
     void Update()
     {
         PositionPowerUp();
+        DestroyPowerUp();
     }
 
     private void PositionPowerUp()
@@ -47,6 +56,29 @@ public class PowerUpController : MonoBehaviour
                 isMoving = false;
             }
         }
+    }
+
+    private void DestroyPowerUp()
+    {
+        if (!isMoving)
+        {
+            timer += Time.deltaTime;
+
+            if(timer >= powerUpDuration * 0.66f) {
+                blinkTimer += Time.deltaTime;
+                if (blinkTimer >= blinkInterval)
+                {
+                    rend.enabled = !rend.enabled;
+                    blinkTimer = 0f;
+                }
+            }
+
+            if (timer >= powerUpDuration)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
