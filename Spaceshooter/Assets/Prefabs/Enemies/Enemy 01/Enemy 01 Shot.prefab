@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687aca0544c375946b4540f97db6fb10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: -5
   shotDamage: 1
   shotExplosion: {fileID: 4680779225304755007, guid: b2c14721ce09289418ad3dfa5b58abae, type: 3}
+  origin: Enemy
 --- !u!50 &5983494069919548995
 Rigidbody2D:
   serializedVersion: 4

@@ -8,6 +8,8 @@ public class ShotController : MonoBehaviour
 
     [SerializeField] private GameObject shotExplosion;
 
+    [SerializeField] private string origin;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class ShotController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Entity>())
         {
+            if (collision.CompareTag("Shield") && origin == "Player") return;
+
             collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
             Instantiate(shotExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);

@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 7558734788708736753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687aca0544c375946b4540f97db6fb10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 10
   shotDamage: 1
   shotExplosion: {fileID: 4680779225304755007, guid: b2c14721ce09289418ad3dfa5b58abae, type: 3}
+  origin: Player
 --- !u!50 &4390034224814078618
 Rigidbody2D:
   serializedVersion: 4
