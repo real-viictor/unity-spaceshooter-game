@@ -202,12 +202,12 @@ public class GameController : MonoBehaviour
     { 
         powerUpSpawnChance = Random.Range(0f, 1f);
 
-        if(powerUpSpawnChance <= shotPowerUpSpawnChance)
-        {
-            Instantiate(shotPowerUpObject, position, Quaternion.identity);
-        } else if(powerUpSpawnChance <= healthPowerUpSpawnChance)
+        if(powerUpSpawnChance <= healthPowerUpSpawnChance)
         {
             Instantiate(healthPowerUpObject, position, Quaternion.identity);
+        } else if (powerUpSpawnChance <= shotPowerUpSpawnChance)
+        {
+            Instantiate(shotPowerUpObject, position, Quaternion.identity);
         }
     }
 }
