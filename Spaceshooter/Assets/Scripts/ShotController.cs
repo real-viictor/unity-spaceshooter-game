@@ -37,6 +37,11 @@ public class ShotController : MonoBehaviour
         if(collision.gameObject.GetComponent<Entity>())
         {
             collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
+            //Alterando a Sprite do Shield quando ele é acertado por um tiro
+            if(collision.CompareTag("Shield"))
+            {
+                collision.gameObject.GetComponent<ShieldController>().UpdateSprite();
+            }
             Instantiate(shotExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

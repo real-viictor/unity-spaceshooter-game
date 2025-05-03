@@ -105,6 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityHealth: 6
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
+  shieldSprites:
+  - {fileID: 21300000, guid: d5fc081079f240249bbca483955101b1, type: 3}
+  - {fileID: 21300000, guid: 41435cfda459d9247ba488640a02ef0a, type: 3}
+  - {fileID: 21300000, guid: 508aa19e8bcc6484f90199d96107195b, type: 3}
 --- !u!1 &7479031678260549476
 GameObject:
   m_ObjectHideFlags: 0
