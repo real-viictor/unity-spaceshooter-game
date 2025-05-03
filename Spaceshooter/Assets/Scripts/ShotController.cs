@@ -32,8 +32,12 @@ public class ShotController : MonoBehaviour
     //Causando dano na entidade que o tiro localizar
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
-        Instantiate(shotExplosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        if(collision.gameObject.GetComponent<Entity>())
+        {
+            collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
+            Instantiate(shotExplosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        
     }
 }

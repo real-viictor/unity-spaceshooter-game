@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUpController : MonoBehaviour
@@ -10,6 +11,8 @@ public class PowerUpController : MonoBehaviour
     private Vector3 targetPosition;
     private float spawnMoveDuration = 4f; 
     private float spawnMoveElapsedTime = 0f;
+
+    [SerializeField] private string powerUpEffect;
 
     private bool isMoving = true;
 
@@ -43,6 +46,24 @@ public class PowerUpController : MonoBehaviour
                 transform.position = targetPosition;
                 isMoving = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("MainPlayer"))
+        {
+            switch (powerUpEffect)
+            {
+                case "health":
+                    collision.gameObject.GetComponent<PlayerController>().AddHealth(1);
+                    break;
+                case "shot":
+                    collision.gameObject.GetComponent<PlayerController>().UpgradeShotLevel();
+                    break;
+            }
+
+            Destroy(gameObject);
         }
     }
 }

@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d117c91cd69d841bc945034daecd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpEffect: health
 --- !u!95 &4440780832352504593
 Animator:
   serializedVersion: 5

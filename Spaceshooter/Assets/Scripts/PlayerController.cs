@@ -33,6 +33,8 @@ public class PlayerController : Entity
     private float hLimitPosition = 8.7f;
     private float vLimitPosition = 4.5f;
 
+    private float upgradedShotTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class PlayerController : Entity
     {
         Move();
         Shoot();
+        UpgradedShot();
     }
 
     //Movendo o Player
@@ -87,5 +90,33 @@ public class PlayerController : Entity
             //Ajustando a velocidade e direção do tiro
             shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
         }
+    }
+
+    private void UpgradedShot()
+    {
+        if(shotLevel == 2)
+        {
+            upgradedShotTimer -= Time.deltaTime;
+            Debug.Log(upgradedShotTimer);
+
+            if (upgradedShotTimer <= 0)
+            {
+                shotLevel = 1;
+            }
+        }
+    }
+
+    public void AddHealth(int points)
+    {
+        if(entityHealth < 10)
+        {
+            entityHealth += points;
+        }
+    }
+
+    public void UpgradeShotLevel() 
+    {
+        upgradedShotTimer = 10f;
+        shotLevel = 2;
     }
 }
