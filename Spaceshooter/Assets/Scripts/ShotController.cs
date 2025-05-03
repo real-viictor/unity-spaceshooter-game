@@ -36,8 +36,6 @@ public class ShotController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Entity>())
         {
-            if (collision.CompareTag("Shield") && origin == "Player") return;
-
             collision.gameObject.GetComponent<Entity>().LoseHealth(shotDamage);
             Instantiate(shotExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
