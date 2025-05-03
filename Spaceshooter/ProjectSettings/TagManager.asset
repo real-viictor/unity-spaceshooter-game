@@ -21,7 +21,7 @@ TagManager:
   - Enemies Shots
   - Power Ups
   - FX
-  - 
+  - Shield
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 194440047
+    locked: 0
+  - name: Shield
+    uniqueID: 1288268535
     locked: 0
   - name: FX
     uniqueID: 1163002233
