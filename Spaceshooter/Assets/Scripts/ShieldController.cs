@@ -13,19 +13,34 @@ public class ShieldController : Entity
     private int shieldProtection;
     private SpriteRenderer spriteRend;
 
+    private float shieldDuration = 4f;
+    private float shieldTimer;
+
     [SerializeField] private Sprite[] shieldSprites;
 
     // Start is called before the first frame update
     void Start()
     {
+        SetUpShield();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        FollowPlayer();
+        ReduceShieldLifetime();
+    }
+
+    private void SetUpShield()
+    {
+        shieldTimer = shieldDuration;
         playerObject = FindObjectOfType<PlayerController>();
         playerPosition = playerObject.GetComponent<Transform>();
         spriteRend = GetComponentInChildren<SpriteRenderer>();
         shieldProtection = entityHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FollowPlayer()
     {
         transform.position = playerPosition.position;
     }
@@ -42,6 +57,22 @@ public class ShieldController : Entity
         {
             spriteRend.sprite = shieldSprites[0];
         }
+    }
+
+    private void ReduceShieldLifetime()
+    {
+        if(shieldTimer >= 0)
+        {
+            shieldTimer -= Time.deltaTime;
+        } else
+        {
+            Destroy(gameObject);
+        }
+
+        Color color = spriteRend.color;
+
+        color.a = Mathf.Clamp(shieldTimer / 1f, 0f, 1f);
+        spriteRend.color = color;
     }
 
     public void DisableAnimator()

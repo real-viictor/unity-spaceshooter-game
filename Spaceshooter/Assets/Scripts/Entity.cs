@@ -31,8 +31,13 @@ public class Entity : MonoBehaviour
         //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
         if (entityHealth <= 0)
         {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            DestroyEntity();
         }
+    }
+
+    private void DestroyEntity()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

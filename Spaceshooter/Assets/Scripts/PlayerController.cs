@@ -82,7 +82,7 @@ public class PlayerController : Entity
     //Disparando com o Player
     private void Shoot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Shoot"))
         { 
 
             if (shotLevel == 2)
@@ -102,7 +102,7 @@ public class PlayerController : Entity
 
     private void UseShield()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Shield"))
         {
             if(shieldCharges > 0 && !isShieldActive)
             {
