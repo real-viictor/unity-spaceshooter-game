@@ -1,9 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public class ShieldController : Entity
