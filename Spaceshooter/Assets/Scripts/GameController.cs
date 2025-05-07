@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     private float levelStartTimer;
 
     //Variável do level atual
-    [SerializeField] private int currentLevel;
+    private int currentLevel;
 
     //Variável que controla quantos pontos precisa para passar de nível
     private int pointsToLevelUp;
@@ -47,9 +47,12 @@ public class GameController : MonoBehaviour
     //Chance de Spawn dos Power Ups
     private float powerUpSpawnChance;
 
+    private PlayerController playerObject;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = FindObjectOfType<PlayerController>();
         levelStartTimer = 2f;
     }
 
@@ -133,6 +136,7 @@ public class GameController : MonoBehaviour
                 enemy02SpawnRate = 0f;
                 shotPowerUpSpawnChance = 0f;
                 healthPowerUpSpawnChance = 0f;
+                playerObject.AddShieldCharge(1);
                 break;
             case 2:
                 pointsToLevelUp = 250;
@@ -143,6 +147,7 @@ public class GameController : MonoBehaviour
                 enemy02SpawnRate = 0.15f;
                 shotPowerUpSpawnChance = 0.1f;
                 healthPowerUpSpawnChance = 0.05f;
+                playerObject.AddShieldCharge(2);
                 break;
             case 3:
                 pointsToLevelUp = 500;
@@ -153,8 +158,10 @@ public class GameController : MonoBehaviour
                 enemy02SpawnRate = 0.3f;
                 shotPowerUpSpawnChance = 0.3f;
                 healthPowerUpSpawnChance = 0.2f;
+                playerObject.AddShieldCharge(2);
                 break;
             case 4:
+                playerObject.AddShieldCharge(3);
                 canSpawnBoss = true;
                 break;
         }

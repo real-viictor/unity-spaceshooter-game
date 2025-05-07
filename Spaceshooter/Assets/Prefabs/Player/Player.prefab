@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 194440047
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -188778651, guid: 7bd5cf35a8a764b4291dfeb06811a788, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -199,6 +199,9 @@ MonoBehaviour:
   - {fileID: 1799583939593931648}
   shotSpeed: 10
   shotLevel: 1
+  shieldCharges: 3
+  maxShieldCharges: 5
+  shieldObject: {fileID: 3534288271712980700, guid: 2098a02800a9f664c8040fcdb61e8cb6, type: 3}
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4

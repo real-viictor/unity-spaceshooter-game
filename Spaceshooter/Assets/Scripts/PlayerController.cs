@@ -23,6 +23,13 @@ public class PlayerController : Entity
     //Nível do tiro do Player
     [SerializeField] private int shotLevel = 1;
 
+    [SerializeField] private int shieldCharges = 3;
+    [SerializeField] private int maxShieldCharges = 5;
+
+    [SerializeField] private GameObject shieldObject;
+
+    private bool isShieldActive = false;
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
 
@@ -48,6 +55,7 @@ public class PlayerController : Entity
         Move();
         Shoot();
         ReducePowerUpDuration();
+        UseShield();
     }
 
     //Movendo o Player
@@ -92,6 +100,19 @@ public class PlayerController : Entity
         }
     }
 
+    private void UseShield()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if(shieldCharges > 0 && !isShieldActive)
+            {
+                isShieldActive = true;
+                Instantiate(shieldObject, transform.position, Quaternion.identity);
+                shieldCharges--;
+            }
+        }
+    }
+
     private void ReducePowerUpDuration()
     {
         if(shotLevel == 2)
@@ -117,5 +138,16 @@ public class PlayerController : Entity
     {
         upgradedShotTimer = 10f;
         shotLevel = 2;
+    }
+
+    public void AddShieldCharge(int charges)
+    {
+        
+        shieldCharges = Mathf.Clamp(shieldCharges + charges, 0, maxShieldCharges);
+    }
+
+    public void setShieldStatus(bool status)
+    {
+        isShieldActive = status;
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class ShieldController : Entity
 {
+    private PlayerController playerObject;
     private Transform playerPosition;
     private int shieldProtection;
     private SpriteRenderer spriteRend;
@@ -17,11 +18,10 @@ public class ShieldController : Entity
     // Start is called before the first frame update
     void Start()
     {
-        playerPosition = FindObjectOfType<PlayerController>().GetComponent<Transform>();
+        playerObject = FindObjectOfType<PlayerController>();
+        playerPosition = playerObject.GetComponent<Transform>();
         spriteRend = GetComponentInChildren<SpriteRenderer>();
         shieldProtection = entityHealth;
-
-        Debug.Log(spriteRend.sprite);
     }
 
     // Update is called once per frame
@@ -47,5 +47,10 @@ public class ShieldController : Entity
     public void DisableAnimator()
     {
         GetComponent<Animator>().enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        playerObject.setShieldStatus(false);
     }
 }
