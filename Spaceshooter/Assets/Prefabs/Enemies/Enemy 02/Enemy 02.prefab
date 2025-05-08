@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityHealth: 3
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
+  canBeHit: 1
   shotTimerMinRange: 3
   shotTimerMaxRange: 5
   points: 25

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss Combat
+  m_Name: Boss Arriving
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 2040608617, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
+      value: {fileID: -292761775, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
     - time: 0.083333336
-      value: {fileID: -1129536999, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
+      value: {fileID: -1004827285, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
     - time: 0.16666667
-      value: {fileID: -2118695621, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
+      value: {fileID: 923601044, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,9 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 2040608617, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
-    - {fileID: -1129536999, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
-    - {fileID: -2118695621, guid: dfc1730146664b848b15a1084fa4ae5e, type: 3}
+    - {fileID: -292761775, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
+    - {fileID: -1004827285, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
+    - {fileID: 923601044, guid: 03014295159f7ad49a1a4afd21657299, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
