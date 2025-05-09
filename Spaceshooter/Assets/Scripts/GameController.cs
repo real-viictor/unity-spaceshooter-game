@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour
     //Recebe os objetos dos inimigos
     [SerializeField] private GameObject enemy01Object;
     [SerializeField] private GameObject enemy02Object;
+    [SerializeField] private GameObject bossObject;
 
     //Recebe os objetos dos Power Ups
     [SerializeField] private GameObject shotPowerUpObject;
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour
     private float enemy02SpawnRate;
 
     //Informa ao Script se o boss pode nascer
-    private bool canSpawnBoss;
+    private bool canSpawnBoss, isBossSpawned;
 
     //Spawn Rate de cada criação de Power Ups
     private float shotPowerUpSpawnChance, healthPowerUpSpawnChance;
@@ -115,7 +116,11 @@ public class GameController : MonoBehaviour
 
     private void SpawnBoss()
     {
-        Debug.Log("O Boss chegou");
+        if(!isBossSpawned)
+        {
+            
+            isBossSpawned = true;
+        }
     }
 
     //Mudando as variáveis de dificuldade do jogo por nível
