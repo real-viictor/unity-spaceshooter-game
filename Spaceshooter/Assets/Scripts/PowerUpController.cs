@@ -2,14 +2,7 @@ using UnityEngine;
 
 public class PowerUpController : MonoBehaviour
 {
-    private float positionX, positionY;
-
-    private Vector3 startPosition;
-    private Vector3 targetPosition;
-    private float spawnMoveDuration = 4f; 
-    private float spawnMoveElapsedTime = 0f;
-
-    private float powerUpDuration = 6f;
+    private float powerUpDuration = 10f;
     private float timer = 0f;
 
     private float blinkTimer = 0f;
@@ -17,65 +10,52 @@ public class PowerUpController : MonoBehaviour
 
     private Renderer rend;
 
-    [SerializeField] private string powerUpEffect;
+    private Rigidbody2D rb;
 
-    private bool isMoving = true;
+    [SerializeField] private string powerUpEffect;
 
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponentInChildren<Renderer>();
-        startPosition = transform.position;
-        positionX = Random.Range(-8f,8f);
-        positionY = Random.Range(-0.5f, -4.5f);
-        targetPosition = new Vector3(positionX, positionY, 0);
+        SetUpPowerUp();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PositionPowerUp();
+        
         DestroyPowerUp();
     }
 
-    private void PositionPowerUp()
+    private void SetUpPowerUp()
     {
-        if (isMoving)
+        rend = GetComponentInChildren<Renderer>();
+        rb = GetComponent<Rigidbody2D>();
+
+        if(rb != null)
         {
-            spawnMoveElapsedTime += Time.deltaTime;
-            float t = spawnMoveElapsedTime / spawnMoveDuration;
-
-            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
-
-            if (t >= 1f)
-            {
-                transform.position = targetPosition;
-                isMoving = false;
-            }
+            rb.velocity = new Vector2(Random.Range(-0.4f, 0.4f), Random.Range(-0.5f, -0.7f));
         }
     }
 
     private void DestroyPowerUp()
     {
-        if (!isMoving)
-        {
-            timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
-            if(timer >= powerUpDuration * 0.66f) {
-                blinkTimer += Time.deltaTime;
-                if (blinkTimer >= blinkInterval)
-                {
-                    rend.enabled = !rend.enabled;
-                    blinkTimer = 0f;
-                }
-            }
-
-            if (timer >= powerUpDuration)
+        if(timer >= powerUpDuration * 0.66f) {
+            blinkTimer += Time.deltaTime;
+            if (blinkTimer >= blinkInterval)
             {
-                Destroy(gameObject);
+                rend.enabled = !rend.enabled;
+                blinkTimer = 0f;
             }
         }
-        
+
+        if (timer >= powerUpDuration)
+        {
+            Destroy(gameObject);
+        }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

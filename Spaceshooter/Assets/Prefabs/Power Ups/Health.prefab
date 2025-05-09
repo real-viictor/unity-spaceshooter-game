@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8594982881253219940}
   - component: {fileID: 4440780832352504593}
   - component: {fileID: 1559108665739035765}
+  - component: {fileID: -4487979766099468794}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -188,3 +189,30 @@ CircleCollider2D:
   m_Offset: {x: -0.0021899343, y: -0.013139367}
   serializedVersion: 2
   m_Radius: 0.20874423
+--- !u!50 &-4487979766099468794
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397598810626252305}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
