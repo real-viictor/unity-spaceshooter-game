@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
     {
         if(!isBossSpawned)
         {
-            
+            Instantiate(bossObject, transform.position, Quaternion.identity);
             isBossSpawned = true;
         }
     }
