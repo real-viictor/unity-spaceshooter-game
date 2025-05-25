@@ -22,6 +22,7 @@ public class BossController : Entity
 
     private float xLimit = 5;
     private int directionChangeCounter = 0;
+    private int cannonShotsCounter;
 
     private Vector2 bossRoamDirection;
 
@@ -48,9 +49,12 @@ public class BossController : Entity
             {
                 stateMachineTimer -= Time.deltaTime;
             } else 
-            { 
+            {
+                if(stateMachineTimer < 0f)
+                {
+                    attackPatternState = Random.Range(1, 3);//TODO: Alterar Range para total de ataques do Switch
+                }
                 stateMachineTimer = Random.Range(1f, 3f);
-                attackPatternState = Random.Range(1, 1); //TODO: Alterar Range para total de ataques do Switch
                 isAttackPatternActive = true;
             }
 
@@ -61,6 +65,10 @@ public class BossController : Entity
                     case 1:
                         RoamAttack();
                         break;
+                    case 2:
+                        CannonShotAttack();
+                        break;
+                    
                 }
 
             }
@@ -113,10 +121,37 @@ public class BossController : Entity
         {
             directionChangeCounter = 0;
             bossRoamDirection = Vector2.zero;
-            bossRB.velocity = bossRoamDirection;
+            if(transform.position.x < 0)
+            {
+                bossRB.velocity = Vector2.right;
+            } else
+            {
+                bossRB.velocity = Vector2.left;
+            }
+            
             isAttackPatternActive = false;
         }
-        
+    }
+
+    private void CannonShotAttack()
+    {
+        if (shotIntervalTimer > 0f)
+        {
+            shotIntervalTimer -= Time.deltaTime;
+        } else
+        {
+            Vector2 shotDirection = new Vector2(Random.Range(-0.2f, 0.2f), -1);
+            float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+            CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
+            cannonShotsCounter++;
+            shotIntervalTimer = 0.3f;
+        }
+
+        if(cannonShotsCounter == 3)
+        {
+            cannonShotsCounter = 0;
+            isAttackPatternActive = false;
+        }
     }
 
     //Utilizado como evento da animação
