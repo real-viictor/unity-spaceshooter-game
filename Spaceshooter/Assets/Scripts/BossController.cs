@@ -1,9 +1,13 @@
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossController : Entity
 {
-    [SerializeField] private GameObject[] ShotPositions;
+    [SerializeField] private Transform[] shotPositions;
+    [SerializeField] private GameObject[] shotObjects;
+
+    [SerializeField] private float shotSpeed;
 
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection;
 
@@ -11,6 +15,8 @@ public class BossController : Entity
 
     private int attackPatternState;
     private float stateMachineTimer;
+    private float shotIntervalTimer = 0.5f;
+    private int shootingFromLeft = 0;
 
     private float bossSpeed = 3;
 
@@ -63,6 +69,16 @@ public class BossController : Entity
 
     private void RoamAttack()
     {
+        if (shotIntervalTimer > 0f)
+        {
+            shotIntervalTimer -= Time.deltaTime;
+        } else
+        {
+            shootingFromLeft ^= 1;
+            CreateShot(shotObjects[0], shotPositions[0+shootingFromLeft], Vector2.down, shotSpeed);
+            shotIntervalTimer = 0.3f;
+        }
+
         if (bossRoamDirection == Vector2.zero)
         {
             float direction = Random.value < 0.5f ? -1 : 1;
@@ -100,8 +116,7 @@ public class BossController : Entity
             bossRB.velocity = bossRoamDirection;
             isAttackPatternActive = false;
         }
-
-        Debug.Log(directionChangeCounter);
+        
     }
 
     //Utilizado como evento da animação

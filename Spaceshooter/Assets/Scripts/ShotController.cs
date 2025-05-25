@@ -6,6 +6,7 @@ public class ShotController : MonoBehaviour
 
     [SerializeField] private GameObject shotExplosion;
 
+
     // Start is called before the first frame update
     void Start()
     {

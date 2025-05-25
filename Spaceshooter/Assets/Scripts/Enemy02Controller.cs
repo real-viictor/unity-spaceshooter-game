@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy02Controller : EnemyEntity
 {
@@ -101,17 +102,14 @@ public class Enemy02Controller : EnemyEntity
                 //Atirando apenas se o inimigo conseguiu localizar o player na cena
                 if (enemyShotTarget != null)
                 {
-                    //Criando a instância do tiro e salvando em uma variável
-                    GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, transform.rotation);
-
-                    var shotDirection = enemyShotTarget.transform.position - shotInstance.transform.position;
-
-                    //Fazendo o tiro ir na direção do player, normalizando o vetor e dando a velocidade do tiro atribuída ao inimigo
-                    shotInstance.GetComponent<Rigidbody2D>().velocity = shotDirection.normalized * shotSpeed;
+                    //Calculando a direção que o tiro deve ir
+                    Vector2 shotDirection = enemyShotTarget.transform.position - shotPosition.transform.position;
 
                     //Fazendo o tiro "olhar" para o Player
                     //NOTE: A soma de +90 é para compensar a Sprite
-                    shotInstance.GetComponent<Rigidbody2D>().rotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                    float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+
+                    CreateShot(enemyShotObject, shotPosition, shotDirection.normalized, shotSpeed, shotRotation);
                 }
             }
         }   

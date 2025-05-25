@@ -52,13 +52,8 @@ public class Enemy01Controller : EnemyEntity
             //Ao zerar o Timer, aleatoriza o tempo do próximo tiro, redefine o timer e instancia um tiro
             if(shotTimer <= 0)
             {
+                CreateShot(enemyShotObject, shotPosition, Vector2.down, shotSpeed);
                 shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
-
-                //Salvando a instância do tiro em uma variável
-                GameObject shotInstance = Instantiate(enemyShotObject, shotPosition.position, Quaternion.identity);
-
-                //Determinando a velocidade e direção do tiro
-                shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.down * shotSpeed;
             }
         }
     }

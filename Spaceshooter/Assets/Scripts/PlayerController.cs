@@ -18,7 +18,7 @@ public class PlayerController : Entity
     [SerializeField] private float shotSpeed = 10f;
 
     //Nível do tiro do Player
-    [SerializeField] private int shotLevel = 1;
+    private int shotLevel = 1;
 
     [SerializeField] private int shieldCharges = 3;
     [SerializeField] private int maxShieldCharges = 5;
@@ -89,11 +89,8 @@ public class PlayerController : Entity
             {
                 shootingFromLeft = 0;
             }
-            
-            //Criando a instância do tiro (baseado no nível do player) e salvando na variável
-            GameObject shotInstance = Instantiate(shotObjects[shotLevel-1], shotPositions[shotLevel-1+shootingFromLeft].position, Quaternion.identity);
-            //Ajustando a velocidade e direção do tiro
-            shotInstance.GetComponent<Rigidbody2D>().velocity = Vector2.up * shotSpeed;
+
+            CreateShot(shotObjects[shotLevel - 1], shotPositions[shotLevel - 1 + shootingFromLeft], Vector2.up, shotSpeed);
         }
     }
 

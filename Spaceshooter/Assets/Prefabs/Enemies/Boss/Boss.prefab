@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 2898385871629480790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0, z: 0}
+  m_LocalPosition: {x: -1.6, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -371,10 +371,14 @@ MonoBehaviour:
   entityHealth: 50
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   canBeHit: 0
-  ShotPositions:
-  - {fileID: 8698496616103593324}
-  - {fileID: 2898385871629480790}
-  - {fileID: 6998868589556650071}
+  shotPositions:
+  - {fileID: 7608610175753014713}
+  - {fileID: 2930134819434935953}
+  - {fileID: 4943841525116719276}
+  shotObjects:
+  - {fileID: 421518273685639958, guid: 04da6dc87ad41864383e99d9e7c042ab, type: 3}
+  - {fileID: 8953927879069231380, guid: 99fc9f3d1b4346c43839578fa38245e9, type: 3}
+  shotSpeed: 5
 --- !u!95 &3376270485142191957
 Animator:
   serializedVersion: 5
@@ -505,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 6998868589556650071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0, z: 0}
+  m_LocalPosition: {x: 1.6, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

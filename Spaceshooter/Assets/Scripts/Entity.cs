@@ -43,4 +43,14 @@ public class Entity : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
+    
+    public void CreateShot(GameObject shotObject, Transform position, Vector2 direction, float speed, float rotation = 0f)
+    {
+        GameObject shotInstance = Instantiate(shotObject, position.position, Quaternion.identity);
+        Rigidbody2D shotRB = shotInstance.GetComponent<Rigidbody2D>();
+        shotRB.velocity = direction * speed;
+        shotRB.rotation = rotation;
+    }
+    
 }
