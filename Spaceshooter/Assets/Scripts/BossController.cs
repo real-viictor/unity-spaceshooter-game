@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossController : Entity
 {
+    [SerializeField] private GameObject[] ShotPositions;
+
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection;
 
     private Rigidbody2D bossRB;

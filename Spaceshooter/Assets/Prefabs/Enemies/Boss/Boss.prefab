@@ -371,6 +371,10 @@ MonoBehaviour:
   entityHealth: 50
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   canBeHit: 0
+  ShotPositions:
+  - {fileID: 8698496616103593324}
+  - {fileID: 2898385871629480790}
+  - {fileID: 6998868589556650071}
 --- !u!95 &3376270485142191957
 Animator:
   serializedVersion: 5
