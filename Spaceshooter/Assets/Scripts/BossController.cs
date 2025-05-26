@@ -53,7 +53,7 @@ public class BossController : Entity
         {
             if(stateMachineTimer > 0f && !isAttackPatternActive)
             {
-                //Debug.Log("O timer está ativo");
+
                 stateMachineTimer -= Time.deltaTime;
             } else 
             {
@@ -66,7 +66,7 @@ public class BossController : Entity
                     } while (newPattern == attackPatternState);
                     attackPatternState = newPattern;
                 }
-                //Debug.Log("O timer está parado");
+
                 stateMachineTimer = Random.Range(1f, 3f);
                 isAttackPatternActive = true;
             }
@@ -81,7 +81,7 @@ public class BossController : Entity
                     case 2:
                         CannonShotAttack();
                         break;
-                    
+
                 }
 
             }
@@ -182,7 +182,7 @@ public class BossController : Entity
                 hasBossTargetPosition = true;
             }
 
-            if (Vector2.Distance(transform.position, bossTargetPosition) < 0.01f)
+            if (isAtPosition(transform.position, bossTargetPosition))
             {
                 isBossInPosition = true;
             } else
@@ -224,7 +224,7 @@ public class BossController : Entity
     {
         if (hasToRecenterBoss)
         {
-            if (Vector2.Distance(transform.position, bossCenterPosition) < 0.01f)
+            if (isAtPosition(transform.position, bossCenterPosition))
             {
                 hasToRecenterBoss = false;
                 isAttackPatternActive = false;
@@ -234,6 +234,11 @@ public class BossController : Entity
                 transform.position = Vector2.MoveTowards(transform.position, bossCenterPosition, bossSpeed * Time.deltaTime);
             }
         }
+    }
+
+    private bool isAtPosition(Vector2 currentPosition, Vector2 targetPosition)
+    {
+        return Vector2.Distance(currentPosition, targetPosition) < 0.01f;
     }
 
     //Utilizado como evento da animação
