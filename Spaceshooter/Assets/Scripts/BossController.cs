@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class BossController : Entity
 
     [SerializeField] private float shotSpeed;
 
-    private bool isFightOcurring, isAttackPatternActive, isChangedDirection;
+    private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
 
     private Rigidbody2D bossRB;
 
@@ -20,11 +21,16 @@ public class BossController : Entity
 
     private float bossSpeed = 3;
 
-    private float xLimit = 5;
+    private float xLimit = 6.5f;
+    private float yMinLimit = 1f;
+    private float yMaxLimit = 3f;
     private int directionChangeCounter = 0;
-    private int cannonShotsCounter;
+    private int cannonShotsCounter, cannonShotsAttacksCounter;
 
-    private Vector2 bossRoamDirection;
+    private Vector2 bossRoamDirection, bossTargetPosition;
+    private Vector2 bossCenterPosition = new Vector2(0, 2);
+
+    private bool hasBossRoamDirection, hasBossTargetPosition, hasToRecenterBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +58,12 @@ public class BossController : Entity
             {
                 if(stateMachineTimer < 0f)
                 {
-                    attackPatternState = Random.Range(1, 3);//TODO: Alterar Range para total de ataques do Switch
+                    int newPattern;
+                    do
+                    {
+                        newPattern = Random.Range(1, 3); //TODO: Alterar Range para total de ataques do Switch
+                    } while (newPattern == attackPatternState);
+                    attackPatternState = newPattern;
                 }
                 stateMachineTimer = Random.Range(1f, 3f);
                 isAttackPatternActive = true;
@@ -77,81 +88,155 @@ public class BossController : Entity
 
     private void RoamAttack()
     {
-        if (shotIntervalTimer > 0f)
+        if (!hasToRecenterBoss)
         {
-            shotIntervalTimer -= Time.deltaTime;
+            ShootAtIntervals();
+            MoveBoss();
         } else
         {
-            shootingFromLeft ^= 1;
-            CreateShot(shotObjects[0], shotPositions[0+shootingFromLeft], Vector2.down, shotSpeed);
-            shotIntervalTimer = 0.3f;
+            RecenterBoss();
         }
+        
 
-        if (bossRoamDirection == Vector2.zero)
+        void ShootAtIntervals()
         {
-            float direction = Random.value < 0.5f ? -1 : 1;
-            bossRoamDirection = new Vector2(direction, 0);
-        }
-
-        bossRB.velocity = bossRoamDirection * bossSpeed;
-
-        if (bossRB.position.x > xLimit)
-        {
-            if (!isChangedDirection)
+            if (shotIntervalTimer > 0f)
             {
-                directionChangeCounter++;
-                bossRoamDirection = Vector2.left;
-                isChangedDirection = true;
+                shotIntervalTimer -= Time.deltaTime;
             }
-            
-        } else if(bossRB.position.x < -xLimit)
-        {
-            if (!isChangedDirection)
+            else
             {
-                directionChangeCounter++;
-                bossRoamDirection = Vector2.right;
-                isChangedDirection = true;
+                shootingFromLeft ^= 1;
+                CreateShot(shotObjects[0], shotPositions[0 + shootingFromLeft], Vector2.down, shotSpeed);
+                shotIntervalTimer = 0.3f;
             }
-        } else
-        {
-            isChangedDirection = false;
         }
+        
+        void MoveBoss()
+        {
+            if (!hasBossRoamDirection)
+            {
+                float direction = Random.value < 0.5f ? -1 : 1;
+                bossRoamDirection = new Vector2(direction, 0);
+                hasBossRoamDirection = true;
+            }
 
-        if (directionChangeCounter > 4)
-        {
-            directionChangeCounter = 0;
-            bossRoamDirection = Vector2.zero;
-            if(transform.position.x < 0)
+            bossRB.velocity = bossRoamDirection * bossSpeed;
+
+            if (bossRB.position.x > xLimit)
             {
-                bossRB.velocity = Vector2.right;
-            } else
-            {
-                bossRB.velocity = Vector2.left;
+                if (!isChangedDirection)
+                {
+                    directionChangeCounter++;
+                    bossRoamDirection = Vector2.left;
+                    isChangedDirection = true;
+                }
+
             }
-            
-            isAttackPatternActive = false;
-        }
+            else if (bossRB.position.x < -xLimit)
+            {
+                if (!isChangedDirection)
+                {
+                    directionChangeCounter++;
+                    bossRoamDirection = Vector2.right;
+                    isChangedDirection = true;
+                }
+            }
+            else
+            {
+                isChangedDirection = false;
+            }
+
+            if (directionChangeCounter > 4)
+            {
+                directionChangeCounter = 0;
+                bossRB.velocity = Vector2.zero;
+                hasBossRoamDirection = false;
+                hasToRecenterBoss = true;
+            }
+        }   
+        
     }
 
     private void CannonShotAttack()
     {
-        if (shotIntervalTimer > 0f)
+        if (cannonShotsAttacksCounter < 3)
         {
-            shotIntervalTimer -= Time.deltaTime;
+            PositionBoss();
+            CannonShoot();
         } else
         {
-            Vector2 shotDirection = new Vector2(Random.Range(-0.2f, 0.2f), -1);
-            float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
-            CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
-            cannonShotsCounter++;
-            shotIntervalTimer = 0.3f;
+            cannonShotsAttacksCounter = 0;
+            hasToRecenterBoss = true;
         }
 
-        if(cannonShotsCounter == 3)
+        RecenterBoss();
+
+        void PositionBoss()
         {
-            cannonShotsCounter = 0;
-            isAttackPatternActive = false;
+            if (!hasBossTargetPosition)
+            {
+                bossTargetPosition = new Vector2(Random.Range(-xLimit, xLimit), Random.Range(yMinLimit, yMaxLimit));
+                hasBossTargetPosition = true;
+            }
+
+            if (IsAtPosition(transform.position, bossTargetPosition))
+            {
+                isBossInPosition = true;
+            } else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * Time.deltaTime);
+            }
         }
+        
+        void CannonShoot()
+        {
+            if (isBossInPosition)
+            {
+                if (shotIntervalTimer > 0f)
+                {
+                    shotIntervalTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    Vector2 shotDirection = new Vector2(Random.Range(-0.2f, 0.2f), -1);
+                    float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                    CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
+
+                    cannonShotsCounter++;
+                    shotIntervalTimer = 0.3f;
+                }
+
+                if (cannonShotsCounter == 3)
+                {
+                    cannonShotsCounter = 0;
+                    isBossInPosition = false;
+                    hasBossTargetPosition = false;
+                    cannonShotsAttacksCounter++;
+                }
+            }
+        }
+    }
+
+    private void RecenterBoss()
+    {
+        if (hasToRecenterBoss)
+        {
+            if (IsAtPosition(transform.position, bossCenterPosition))
+            {
+                hasToRecenterBoss = false;
+                isAttackPatternActive = false;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, bossCenterPosition, bossSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    private bool IsAtPosition(Vector2 current, Vector2 target)
+    {
+        return Vector2.Distance(current, target) < 0.01f;
     }
 
     //Utilizado como evento da animação
