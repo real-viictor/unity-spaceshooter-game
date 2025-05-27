@@ -2,6 +2,7 @@ using TMPro;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BossController : Entity
 {
@@ -12,6 +13,7 @@ public class BossController : Entity
 
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
 
+    private PlayerController enemyShotTarget;
     private Rigidbody2D bossRB;
 
     private int attackPatternState;
@@ -25,7 +27,7 @@ public class BossController : Entity
     private float yMinLimit = 1f;
     private float yMaxLimit = 3f;
     private int directionChangeCounter = 0;
-    private int cannonShotsCounter, cannonShotsAttacksCounter;
+    private int cannonShotsCounter, cannonShotsAttacksCounter, missileShotsCounter;
 
     private Vector2 bossRoamDirection, bossTargetPosition;
     private Vector2 bossCenterPosition = new Vector2(0, 2);
@@ -39,6 +41,7 @@ public class BossController : Entity
        isAttackPatternActive = false;
        stateMachineTimer = Random.Range(1f, 4f);
        bossRB = GetComponent<Rigidbody2D>();
+       enemyShotTarget = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -62,7 +65,7 @@ public class BossController : Entity
                     int newPattern;
                     do
                     {
-                        newPattern = Random.Range(1, 3); //TODO: Alterar Range para total de ataques do Switch
+                        newPattern = Random.Range(1, 4); //TODO: Alterar Range para total de ataques do Switch
                     } while (newPattern == attackPatternState);
                     attackPatternState = newPattern;
                 }
@@ -81,7 +84,9 @@ public class BossController : Entity
                     case 2:
                         CannonShotAttack();
                         break;
-
+                    case 3:
+                        MissilesAttack();
+                        break; 
                 }
 
             }
@@ -206,7 +211,7 @@ public class BossController : Entity
                     CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
 
                     cannonShotsCounter++;
-                    shotIntervalTimer = 0.3f;
+                    shotIntervalTimer = 0.2f;
                 }
 
                 if (cannonShotsCounter == 3)
@@ -215,6 +220,59 @@ public class BossController : Entity
                     isBossInPosition = false;
                     hasBossTargetPosition = false;
                     cannonShotsAttacksCounter++;
+                }
+            }
+        }
+    }
+
+    private void MissilesAttack()
+    {
+        if(missileShotsCounter <= 10 && !hasToRecenterBoss)
+        {
+            PositionBoss();
+            ShotMissiles();
+        } else
+        {
+            missileShotsCounter = 0;
+            hasToRecenterBoss = true;
+        }
+
+        RecenterBoss();
+
+        void PositionBoss()
+        {
+            if(!hasBossTargetPosition)
+            {
+                bossTargetPosition = new Vector2(0, 3);
+                hasBossTargetPosition = true;
+            }
+            
+
+            if (isAtPosition(transform.position, bossTargetPosition))
+            {
+                isBossInPosition = true;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * Time.deltaTime);
+            }
+        }
+
+        void ShotMissiles()
+        {
+            if(isBossInPosition)
+            {
+                if(shotIntervalTimer > 0) 
+                { 
+                    shotIntervalTimer -= Time.deltaTime;
+                } else
+                {
+                    Vector2 shotDirection = enemyShotTarget.transform.position - shotPositions[2].transform.position;
+                    float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                    CreateShot(shotObjects[1], shotPositions[2], shotDirection.normalized, shotSpeed, shotRotation);
+
+                    missileShotsCounter++;
+                    shotIntervalTimer = 0.3f;
                 }
             }
         }

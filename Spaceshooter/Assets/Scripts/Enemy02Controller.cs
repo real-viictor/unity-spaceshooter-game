@@ -12,6 +12,8 @@ public class Enemy02Controller : EnemyEntity
     //Variável que diz para o inimigo até onde ele deve ir
     private int enemyTargetXPosition = 8;
 
+    private PlayerController enemyShotTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class Enemy02Controller : EnemyEntity
 
         //Aleatorizando o primeiro tiro
         shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
+
+        enemyShotTarget = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -95,9 +99,6 @@ public class Enemy02Controller : EnemyEntity
             {
                 //Ao zerar, redefina o tiro e execute a ação de atirar
                 shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
-
-                //Fazendo o inimigo focar o alvo dele no Player
-                var enemyShotTarget = FindObjectOfType<PlayerController>();
 
                 //Atirando apenas se o inimigo conseguiu localizar o player na cena
                 if (enemyShotTarget != null)
