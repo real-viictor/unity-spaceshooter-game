@@ -21,6 +21,11 @@ public class BossController : Entity
     private float cannonShotTimer;
     private float missileShotTimer;
 
+    //Variáveis que salvam o tempo padrão de delay entre os tiros dos ataques do boss
+    [SerializeField] private float standardRoamShotTimer = 0.3f;
+    [SerializeField] private float standardCannonShotTimer = 0.2f;
+    [SerializeField] private float standardMissileShotTimer = 0.3f;
+
     private float bossSpeed = 3;
 
     private float xLimit = 6.5f;
@@ -115,7 +120,7 @@ public class BossController : Entity
             {
                 shootingFromLeft ^= 1;
                 CreateShot(shotObjects[0], shotPositions[0 + shootingFromLeft], Vector2.down, shotSpeed);
-                roamShotTimer = 0.3f;
+                roamShotTimer = standardRoamShotTimer;
             }
         }
         
@@ -211,7 +216,7 @@ public class BossController : Entity
                     CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
 
                     cannonShotsCounter++;
-                    cannonShotTimer = 0.2f;
+                    cannonShotTimer = standardCannonShotTimer;
                 }
 
                 if (cannonShotsCounter == 3)
@@ -275,7 +280,7 @@ public class BossController : Entity
                     }
 
                     missileShotsCounter++;
-                    missileShotTimer = 0.3f;
+                    missileShotTimer = standardMissileShotTimer;
                 }
             }
         }
