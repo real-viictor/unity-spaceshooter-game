@@ -1,3 +1,4 @@
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class BossController : Entity
@@ -5,12 +6,12 @@ public class BossController : Entity
     [SerializeField] private Transform[] shotPositions;
     [SerializeField] private GameObject[] shotObjects;
     [SerializeField] private float shotSpeed;
+    [SerializeField] private float speedFactor = 1f;
 
     private PlayerController enemyShotTarget;
 
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
 
-    
     private Rigidbody2D bossRB;
 
     private int attackPatternState;
@@ -20,11 +21,17 @@ public class BossController : Entity
     private float roamShotTimer;
     private float cannonShotTimer;
     private float missileShotTimer;
+    
 
     //Variáveis que salvam o tempo padrão de delay entre os tiros dos ataques do boss
     [SerializeField] private float standardRoamShotTimer = 0.3f;
     [SerializeField] private float standardCannonShotTimer = 0.2f;
     [SerializeField] private float standardMissileShotTimer = 0.3f;
+
+    [SerializeField] private int standardCannonShotsCounter = 3;
+    [SerializeField] private int standardCannonShotsAttacksCounter = 3;
+    [SerializeField] private int standardMissileShotsCounter = 10;
+    [SerializeField] private int standardDirectionChangeCounter = 3;
 
     private float bossSpeed = 3;
 
@@ -42,11 +49,16 @@ public class BossController : Entity
     // Start is called before the first frame update
     void Start()
     {
-       canBeHit = false;
-       isAttackPatternActive = false;
-       stateMachineTimer = Random.Range(1f, 4f);
-       bossRB = GetComponent<Rigidbody2D>();
-       enemyShotTarget = FindObjectOfType<PlayerController>();
+        canBeHit = false;
+        isAttackPatternActive = false;
+        stateMachineTimer = Random.Range(1f, 4f);
+        bossRB = GetComponent<Rigidbody2D>();
+        enemyShotTarget = FindObjectOfType<PlayerController>();
+
+        //Definindo o tempo inicial dos Timers para evitar que sejam zero.
+        roamShotTimer = standardRoamShotTimer;
+        cannonShotTimer = standardCannonShotTimer;
+        missileShotTimer = standardMissileShotTimer;
     }
 
     // Update is called once per frame
@@ -159,7 +171,7 @@ public class BossController : Entity
                 isChangedDirection = false;
             }
 
-            if (directionChangeCounter > 4)
+            if (directionChangeCounter > standardDirectionChangeCounter)
             {
                 directionChangeCounter = 0;
                 bossRB.velocity = Vector2.zero;
@@ -172,7 +184,7 @@ public class BossController : Entity
 
     private void CannonShotAttack()
     {
-        if (cannonShotsAttacksCounter < 3 && !hasToRecenterBoss)
+        if (cannonShotsAttacksCounter < standardCannonShotsAttacksCounter && !hasToRecenterBoss)
         {
             PositionBoss();
             CannonShoot();
@@ -197,7 +209,7 @@ public class BossController : Entity
                 isBossInPosition = true;
             } else
             {
-                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * speedFactor * Time.deltaTime);
             }
         }
         
@@ -213,13 +225,13 @@ public class BossController : Entity
                 {
                     Vector2 shotDirection = new Vector2(Random.Range(-0.2f, 0.2f), -1);
                     float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
-                    CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
+                    CreateShot(shotObjects[1], shotPositions[2], shotDirection.normalized, shotSpeed * 1.5f, shotRotation);
 
                     cannonShotsCounter++;
                     cannonShotTimer = standardCannonShotTimer;
                 }
 
-                if (cannonShotsCounter == 3)
+                if (cannonShotsCounter == standardCannonShotsCounter)
                 {
                     cannonShotsCounter = 0;
                     isBossInPosition = false;
@@ -232,7 +244,7 @@ public class BossController : Entity
 
     private void MissilesAttack()
     {
-        if(missileShotsCounter <= 10 && !hasToRecenterBoss)
+        if(missileShotsCounter <= standardMissileShotsCounter && !hasToRecenterBoss)
         {
             PositionBoss();
             ShotMissiles();
@@ -259,7 +271,7 @@ public class BossController : Entity
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, bossTargetPosition, bossSpeed * speedFactor * Time.deltaTime);
             }
         }
 
