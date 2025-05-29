@@ -227,6 +227,7 @@ MonoBehaviour:
   enemyShotObject: {fileID: 8953927879069231380, guid: 99fc9f3d1b4346c43839578fa38245e9, type: 3}
   enemySpeed: 4
   enemyHealth: 3
+  enemyShotTarget: {fileID: 8378893109034793064, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
 --- !u!1 &8169797047732513755
 GameObject:
   m_ObjectHideFlags: 0

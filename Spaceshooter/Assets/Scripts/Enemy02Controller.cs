@@ -23,6 +23,8 @@ public class Enemy02Controller : EnemyEntity
         //Localizando o gameObject que controla o jogo
         gameController = FindObjectOfType<GameController>();
 
+        enemyShotTarget = FindObjectOfType<PlayerController>();
+
         //Determinando velocidade do inimigo
         enemyRB.velocity = Vector3.down * enemySpeed;
 
@@ -36,8 +38,6 @@ public class Enemy02Controller : EnemyEntity
 
         //Aleatorizando o primeiro tiro
         shotTimer = Random.Range(shotTimerMinRange, shotTimerMinRange + 1);
-
-        enemyShotTarget = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame

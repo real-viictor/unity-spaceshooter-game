@@ -4,18 +4,22 @@ public class BossController : Entity
 {
     [SerializeField] private Transform[] shotPositions;
     [SerializeField] private GameObject[] shotObjects;
-
     [SerializeField] private float shotSpeed;
+
+    private PlayerController enemyShotTarget;
 
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
 
-    private PlayerController enemyShotTarget;
+    
     private Rigidbody2D bossRB;
 
     private int attackPatternState;
     private float stateMachineTimer;
-    private float shotIntervalTimer = 0.5f;
     private int shootingFromLeft = 0;
+
+    private float roamShotTimer;
+    private float cannonShotTimer;
+    private float missileShotTimer;
 
     private float bossSpeed = 3;
 
@@ -103,15 +107,15 @@ public class BossController : Entity
 
         void ShootAtIntervals()
         {
-            if (shotIntervalTimer > 0f)
+            if (roamShotTimer > 0f)
             {
-                shotIntervalTimer -= Time.deltaTime;
+                roamShotTimer -= Time.deltaTime;
             }
             else
             {
                 shootingFromLeft ^= 1;
                 CreateShot(shotObjects[0], shotPositions[0 + shootingFromLeft], Vector2.down, shotSpeed);
-                shotIntervalTimer = 0.3f;
+                roamShotTimer = 0.3f;
             }
         }
         
@@ -196,9 +200,9 @@ public class BossController : Entity
         {
             if (isBossInPosition)
             {
-                if (shotIntervalTimer > 0f)
+                if (cannonShotTimer > 0f)
                 {
-                    shotIntervalTimer -= Time.deltaTime;
+                    cannonShotTimer -= Time.deltaTime;
                 }
                 else
                 {
@@ -207,7 +211,7 @@ public class BossController : Entity
                     CreateShot(shotObjects[1], shotPositions[2], shotDirection, shotSpeed * 1.5f, shotRotation);
 
                     cannonShotsCounter++;
-                    shotIntervalTimer = 0.2f;
+                    cannonShotTimer = 0.2f;
                 }
 
                 if (cannonShotsCounter == 3)
@@ -258,17 +262,20 @@ public class BossController : Entity
         {
             if(isBossInPosition)
             {
-                if(shotIntervalTimer > 0) 
-                { 
-                    shotIntervalTimer -= Time.deltaTime;
+                if(missileShotTimer > 0) 
+                {
+                    missileShotTimer -= Time.deltaTime;
                 } else
                 {
-                    Vector2 shotDirection = enemyShotTarget.transform.position - shotPositions[2].transform.position;
-                    float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
-                    CreateShot(shotObjects[1], shotPositions[2], shotDirection.normalized, shotSpeed, shotRotation);
+                    if (enemyShotTarget != null)
+                    {
+                        Vector2 shotDirection = enemyShotTarget.transform.position - shotPositions[2].transform.position;
+                        float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
+                        CreateShot(shotObjects[1], shotPositions[2], shotDirection.normalized, shotSpeed, shotRotation);
+                    }
 
                     missileShotsCounter++;
-                    shotIntervalTimer = 0.3f;
+                    missileShotTimer = 0.3f;
                 }
             }
         }

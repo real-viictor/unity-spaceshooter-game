@@ -378,6 +378,7 @@ MonoBehaviour:
   shotObjects:
   - {fileID: 421518273685639958, guid: 04da6dc87ad41864383e99d9e7c042ab, type: 3}
   - {fileID: 8953927879069231380, guid: 99fc9f3d1b4346c43839578fa38245e9, type: 3}
+  enemyShotTarget: {fileID: 8378893109034793064, guid: 0ad8384db88abc84aa6ebfe9e1e080f2, type: 3}
   shotSpeed: 5
 --- !u!95 &3376270485142191957
 Animator:
