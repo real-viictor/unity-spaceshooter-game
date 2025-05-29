@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3695642583577099710}
   - component: {fileID: 8845627879359935898}
+  - component: {fileID: 182397954059683717}
   m_Layer: 0
   m_Name: Boss Explosion
   m_TagString: Untagged
@@ -56,6 +57,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &182397954059683717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554473240709987582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613423e6f4d031c43a8f552f2a961b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &577760884061757611
 PrefabInstance:
   m_ObjectHideFlags: 0
