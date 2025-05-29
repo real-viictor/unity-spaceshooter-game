@@ -103,6 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c502949775a5c499d85e6cdc99adec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallExplosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
+  bossExplosion: {fileID: 0}
+  explosionSpots:
+  - {fileID: 6797733098972608981}
+  - {fileID: 5018728652510867886}
+  - {fileID: 6668247507675804857}
+  - {fileID: 8207989923586364001}
+  - {fileID: 7061062716554404773}
 --- !u!1 &6226650914181939105
 GameObject:
   m_ObjectHideFlags: 0
