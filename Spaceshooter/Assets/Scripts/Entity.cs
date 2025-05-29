@@ -32,7 +32,8 @@ public class Entity : MonoBehaviour
         }
 
         //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
-        if (entityHealth <= 0)
+        //Não aplicável ao Boss do Jogo
+        if (entityHealth <= 0 && !CompareTag("Boss"))
         {
             DestroyEntity();
         }
