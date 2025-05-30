@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d97160545bb78743a985ba9e3d3a6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityHealth: 50
-  explosion: {fileID: 0}
+  entityHealth: 5
+  explosion: {fileID: 5630470816061743975, guid: 91cd5689050883147a49ce86bd584193, type: 3}
   canBeHit: 0
   shotPositions:
   - {fileID: 7608610175753014713}
