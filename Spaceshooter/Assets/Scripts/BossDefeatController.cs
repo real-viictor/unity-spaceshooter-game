@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class BossDefeatController : MonoBehaviour
+public class BossDefeatController : Entity
 {
-    [SerializeField] private GameObject smallExplosion, bossExplosion;
+    [SerializeField] private GameObject smallExplosion;
     [SerializeField] private Transform[] explosionSpots;
 
     private float explosionCreationTimer;
@@ -37,11 +37,5 @@ public class BossDefeatController : MonoBehaviour
             explosionCreationTimer = 0.3f;
         }
         
-    }
-
-    private void DestroyBoss()
-    {
-        Destroy(gameObject);
-        Instantiate(bossExplosion, transform.position, Quaternion.identity);
     }
 }
