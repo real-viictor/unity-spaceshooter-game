@@ -5,8 +5,6 @@ public class Enemy01Controller : EnemyEntity
     // Start is called before the first frame update
     void Start()
     {
-        gameController = FindObjectOfType<GameController>();
-
         //Pegando o RB do inimigo
         enemyRB = GetComponent<Rigidbody2D>();
 

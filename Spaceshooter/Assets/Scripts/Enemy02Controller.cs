@@ -20,9 +20,6 @@ public class Enemy02Controller : EnemyEntity
         //Pegando o RB do inimigo
         enemyRB = GetComponent<Rigidbody2D>();
 
-        //Localizando o gameObject que controla o jogo
-        gameController = FindObjectOfType<GameController>();
-
         enemyShotTarget = FindObjectOfType<PlayerController>();
 
         //Determinando velocidade do inimigo

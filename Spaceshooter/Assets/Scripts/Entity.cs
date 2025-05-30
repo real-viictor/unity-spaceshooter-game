@@ -10,9 +10,13 @@ public class Entity : MonoBehaviour
 
     [SerializeField] protected bool canBeHit;
 
+    //Variável para pegar o gameController do jogo
+    protected GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindObjectOfType<GameController>();
         canBeHit = true;
     }
 
@@ -33,7 +37,7 @@ public class Entity : MonoBehaviour
 
         //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
         //Não aplicável ao Boss do Jogo
-        if (entityHealth <= 0 && !CompareTag("Boss"))
+        if (entityHealth <= 0)
         {
             DestroyEntity();
         }

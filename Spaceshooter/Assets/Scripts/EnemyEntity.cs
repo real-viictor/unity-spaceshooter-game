@@ -8,9 +8,6 @@ public class EnemyEntity : Entity
     //Variável para pegar o RB dos inimigos
     protected Rigidbody2D enemyRB;
 
-    //Variável para pegar o gameController do jogo
-    protected GameController gameController;
-
     //Intervalo mínimo do disparo do inimigo
     [SerializeField] protected int shotTimerMinRange;
 
