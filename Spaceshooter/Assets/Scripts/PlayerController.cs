@@ -26,9 +26,10 @@ public class PlayerController : Entity
 
     [SerializeField] private GameObject shieldObject;
 
-    private bool isShieldActive = false;
-    private bool canMove = true;
+    [SerializeField] private bool canMove = true;
 
+    private bool isShieldActive = false;
+    
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
 
