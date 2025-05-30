@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : Entity
@@ -26,6 +27,7 @@ public class PlayerController : Entity
     [SerializeField] private GameObject shieldObject;
 
     private bool isShieldActive = false;
+    private bool canMove = true;
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
@@ -49,10 +51,13 @@ public class PlayerController : Entity
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Shoot();
-        ReducePowerUpDuration();
-        UseShield();
+        if(canMove)
+        {
+            Move();
+            Shoot();
+            ReducePowerUpDuration();
+            UseShield();
+        }
     }
 
     //Movendo o Player
@@ -143,5 +148,10 @@ public class PlayerController : Entity
     public void setShieldStatus(bool status)
     {
         isShieldActive = status;
+    }
+
+    public void setCanMoveStatus(bool status)
+    {
+        canMove = status;
     }
 }
