@@ -24,6 +24,7 @@ public class Enemy01Controller : EnemyEntity
         TakePosition();
         Shoot();
         GoAway();
+         
     }
 
     //Função que posiciona o inimigo na altura da tela desejada
