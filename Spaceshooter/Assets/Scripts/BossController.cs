@@ -8,7 +8,7 @@ public class BossController : Entity
     [SerializeField] private float shotSpeed;
     [SerializeField] private float speedFactor = 1f;
 
-    private PlayerController enemyShotTarget;
+    private PlayerController playerInstance;
 
     private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
 
@@ -53,7 +53,9 @@ public class BossController : Entity
         isAttackPatternActive = false;
         stateMachineTimer = Random.Range(1f, 4f);
         bossRB = GetComponent<Rigidbody2D>();
-        enemyShotTarget = FindObjectOfType<PlayerController>();
+        playerInstance = FindObjectOfType<PlayerController>();
+
+        playerInstance.setCanMoveStatus(false);
 
         //Definindo o tempo inicial dos Timers para evitar que sejam zero.
         roamShotTimer = standardRoamShotTimer;
@@ -71,6 +73,7 @@ public class BossController : Entity
     {
         if (isFightOcurring)
         {
+
             if(stateMachineTimer > 0f && !isAttackPatternActive)
             {
 
@@ -284,9 +287,9 @@ public class BossController : Entity
                     missileShotTimer -= Time.deltaTime;
                 } else
                 {
-                    if (enemyShotTarget != null)
+                    if (playerInstance != null)
                     {
-                        Vector2 shotDirection = enemyShotTarget.transform.position - shotPositions[2].transform.position;
+                        Vector2 shotDirection = playerInstance.transform.position - shotPositions[2].transform.position;
                         float shotRotation = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg + 90;
                         CreateShot(shotObjects[1], shotPositions[2], shotDirection.normalized, shotSpeed, shotRotation);
                     }
@@ -314,16 +317,17 @@ public class BossController : Entity
         }
     }
 
-    private bool isAtPosition(Vector2 currentPosition, Vector2 targetPosition)
-    {
-        return Vector2.Distance(currentPosition, targetPosition) < 0.01f;
-    }
-
     //Utilizado como evento da animação
     private void StartFight()
     {
         canBeHit = true;
         isFightOcurring = true;
+        playerInstance.setCanMoveStatus(true);
         GetComponent<Animator>().enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        playerInstance.setCanMoveStatus(false);
     }
 }

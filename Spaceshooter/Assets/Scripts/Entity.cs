@@ -48,6 +48,11 @@ public class Entity : MonoBehaviour
         }
     }
 
+    protected bool isAtPosition(Vector2 currentPosition, Vector2 targetPosition)
+    {
+        return Vector2.Distance(currentPosition, targetPosition) < 0.01f;
+    }
+
     private void DestroyEntity()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);

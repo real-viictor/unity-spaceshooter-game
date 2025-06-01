@@ -93,12 +93,11 @@ public class EnemyEntity : Entity
     //Detectando colisão de inimigos com o Player
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Checando a tag do objeto que colidiu, se for o player, então cause dano nele e se destrua
+        //Checando a tag do objeto que colidiu, se for o player, então cause dano nele e no player
         if (collision.gameObject.CompareTag("MainPlayer"))
         {
             collision.gameObject.GetComponent<Entity>().LoseHealth(2);
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            LoseHealth(2);
         }
     }
 }

@@ -29,7 +29,9 @@ public class PlayerController : Entity
     [SerializeField] private bool canMove = true;
 
     private bool isShieldActive = false;
-    
+
+    private Vector3 playerCenterPosition = new Vector2(0,-4);
+
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
 
@@ -56,9 +58,12 @@ public class PlayerController : Entity
         {
             Move();
             Shoot();
-            ReducePowerUpDuration();
             UseShield();
+        } else
+        {
+            RecenterPlayer();
         }
+        ReducePowerUpDuration();
     }
 
     //Movendo o Player
@@ -151,8 +156,27 @@ public class PlayerController : Entity
         isShieldActive = status;
     }
 
+    private void RecenterPlayer()
+    {
+        if (isAtPosition(transform.position, playerCenterPosition))
+        {
+            playerRB.velocity = Vector3.zero;
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, playerCenterPosition, playerSpeed * Time.deltaTime);
+        }
+    }
+
     public void setCanMoveStatus(bool status)
     {
         canMove = status;
+        //Se o player não pode se mover, então evite qualquer dano nele
+        canBeHit = status;
+    }
+
+    public bool getCanMoveStatus()
+    {
+        return canMove;
     }
 }
