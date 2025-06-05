@@ -1,4 +1,7 @@
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected GameObject explosion;
 
     [SerializeField] protected bool canBeHit;
+
+    [SerializeField] protected TextMeshProUGUI healthField;
 
     //Variável para pegar o gameController do jogo
     protected GameController gameController;
@@ -21,6 +26,7 @@ public class Entity : MonoBehaviour
 
     private void Awake()
     {
+        UpdateUIStats();
         gameController = FindObjectOfType<GameController>();
         canBeHit = true;
     }
@@ -40,6 +46,8 @@ public class Entity : MonoBehaviour
             entityHealth -= damage;
         }
 
+        UpdateUIStats();
+
         //Se o inimigo zerar a vida, instancie a explosão no local onde ele estava e destrua o inimigo
         //Não aplicável ao Boss do Jogo
         if (entityHealth <= 0)
@@ -57,6 +65,14 @@ public class Entity : MonoBehaviour
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void UpdateUIStats()
+    {
+        if (healthField)
+        {
+            healthField.text = "x " + entityHealth.ToString();
+        }
     }
 
     
