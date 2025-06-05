@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -27,6 +28,8 @@ public class PlayerController : Entity
     [SerializeField] private GameObject shieldObject;
 
     [SerializeField] private bool canMove = true;
+
+    [SerializeField] private TextMeshProUGUI shieldChargesText;
 
     private bool isShieldActive = false;
 
@@ -114,6 +117,7 @@ public class PlayerController : Entity
                 isShieldActive = true;
                 Instantiate(shieldObject, transform.position, Quaternion.identity);
                 shieldCharges--;
+                UpdateUIStats();
             }
         }
     }
@@ -137,6 +141,8 @@ public class PlayerController : Entity
         {
             entityHealth += points;
         }
+
+        UpdateUIStats();
     }
 
     public void UpgradeShotLevel() 
@@ -147,8 +153,8 @@ public class PlayerController : Entity
 
     public void AddShieldCharge(int charges)
     {
-        
         shieldCharges = Mathf.Clamp(shieldCharges + charges, 0, maxShieldCharges);
+        UpdateUIStats();
     }
 
     public void setShieldStatus(bool status)
@@ -178,5 +184,14 @@ public class PlayerController : Entity
     public bool getCanMoveStatus()
     {
         return canMove;
+    }
+
+    protected override void UpdateUIStats()
+    {
+        base.UpdateUIStats();
+        if(shieldChargesText)
+        {
+            shieldChargesText.text = "x " + shieldCharges.ToString();
+        }
     }
 }

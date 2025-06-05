@@ -67,7 +67,7 @@ public class Entity : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void UpdateUIStats()
+    protected virtual void UpdateUIStats()
     {
         if (healthField)
         {
