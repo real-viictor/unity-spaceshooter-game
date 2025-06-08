@@ -29,7 +29,7 @@ public class PlayerController : Entity
 
     [SerializeField] private bool canMove = true;
 
-    [SerializeField] private TextMeshProUGUI shieldChargesText;
+    [SerializeField] private TextMeshProUGUI shieldChargesField;
 
     private bool isShieldActive = false;
 
@@ -191,9 +191,9 @@ public class PlayerController : Entity
     protected override void UpdateUIStats()
     {
         base.UpdateUIStats();
-        if(shieldChargesText)
+        if(shieldChargesField)
         {
-            shieldChargesText.text = "x " + shieldCharges.ToString();
+            shieldChargesField.text = "x " + shieldCharges.ToString();
         }
     }
 }

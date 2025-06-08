@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
     //Recebe os objetos dos Power Ups
     [SerializeField] private GameObject shotPowerUpObject;
     [SerializeField] private GameObject healthPowerUpObject;
+
+    [SerializeField] private TextMeshProUGUI PointsField;
 
     //Variável do timer que controla quando o nível poderá começar
     private float levelStartTimer;
@@ -198,6 +201,15 @@ public class GameController : MonoBehaviour
     public void AddPoints(int points)
     {
         playerTotalPoints += points;
+        UpdateUIStats();
+    }
+
+    private void UpdateUIStats()
+    {
+        if (PointsField)
+        {
+            PointsField.text = "Points: " + playerTotalPoints.ToString();
+        }
     }
 
     //Informa aos inimigos se o Boss pode vir, para que eles rodem a função de sair da tela

@@ -190,6 +190,7 @@ MonoBehaviour:
   entityHealth: 3
   explosion: {fileID: 9163573417560393308, guid: 14e9559c72ecb6b4db51e891271bb2c4, type: 3}
   canBeHit: 1
+  healthField: {fileID: 0}
   playerSpeed: 5
   shotObjects:
   - {fileID: 7558734788708736753, guid: 7931aecfb792e4d46ac04d99f7bfa639, type: 3}
@@ -199,10 +200,11 @@ MonoBehaviour:
   - {fileID: 2362409855678227170}
   - {fileID: 1799583939593931648}
   shotSpeed: 10
-  shotLevel: 1
   shieldCharges: 3
   maxShieldCharges: 5
   shieldObject: {fileID: 3534288271712980700, guid: 2098a02800a9f664c8040fcdb61e8cb6, type: 3}
+  canMove: 1
+  shieldChargesField: {fileID: 0}
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4
