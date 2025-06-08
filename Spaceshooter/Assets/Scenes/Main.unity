@@ -566,14 +566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interface
       objectReference: {fileID: 0}
-    - target: {fileID: 8325539933390004126, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
-      propertyPath: m_text
-      value: 'Points: 0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8325539933390004126, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
-      propertyPath: m_margin.z
-      value: -166.4429
-      objectReference: {fileID: 0}
     - target: {fileID: 9050203686473413417, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
       propertyPath: m_Camera
       value: 
