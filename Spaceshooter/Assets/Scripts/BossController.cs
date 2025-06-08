@@ -1,5 +1,6 @@
 using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : Entity
 {
@@ -7,6 +8,7 @@ public class BossController : Entity
     [SerializeField] private GameObject[] shotObjects;
     [SerializeField] private float shotSpeed;
     [SerializeField] private float speedFactor = 1f;
+    [SerializeField] private Image bossHealthImage;
 
     private PlayerController playerInstance;
 
@@ -21,7 +23,8 @@ public class BossController : Entity
     private float roamShotTimer;
     private float cannonShotTimer;
     private float missileShotTimer;
-    
+
+    private int bossMaxHealth = 100;
 
     //Variáveis que salvam o tempo padrão de delay entre os tiros dos ataques do boss
     [SerializeField] private float standardRoamShotTimer = 0.3f;
@@ -49,6 +52,8 @@ public class BossController : Entity
     // Start is called before the first frame update
     void Start()
     {
+        entityHealth = bossMaxHealth;
+        bossHealthImage.fillAmount = 1;
         canBeHit = false;
         isAttackPatternActive = false;
         stateMachineTimer = Random.Range(1f, 4f);
@@ -299,6 +304,12 @@ public class BossController : Entity
                 }
             }
         }
+    }
+
+    protected override void UpdateUIStats()
+    {
+        base.UpdateUIStats();
+        bossHealthImage.fillAmount = (float)entityHealth / (float)bossMaxHealth;
     }
 
     private void RecenterBoss()

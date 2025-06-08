@@ -355,6 +355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
+    - target: {fileID: 1950338931488543673, guid: dee83c1f41aad874c8b5090dea7bb1a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7147804330650703297, guid: dee83c1f41aad874c8b5090dea7bb1a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -565,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 7609406770884532606, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
       propertyPath: m_Name
       value: Interface
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609406770884532606, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9050203686473413417, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
       propertyPath: m_Camera
