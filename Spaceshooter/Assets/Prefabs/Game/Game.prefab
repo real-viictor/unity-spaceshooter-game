@@ -49,5 +49,5 @@ MonoBehaviour:
   bossObject: {fileID: 5936442935847958796, guid: d652e95b0e8f01b40aae740ce724715b, type: 3}
   shotPowerUpObject: {fileID: 5582652971515108623, guid: e96837e94afcd844bbc638c636042445, type: 3}
   healthPowerUpObject: {fileID: 3397598810626252305, guid: d84445d2499e6f4479ec98c2dea13858, type: 3}
-  PointsText: {fileID: 0}
+  PointsField: {fileID: 0}
   playerTotalPoints: 0

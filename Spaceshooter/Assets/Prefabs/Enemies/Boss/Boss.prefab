@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 49922784956859226}
   - component: {fileID: 3755907679971994394}
   - component: {fileID: 3115196715601323846}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Boss Interface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 9050597597793785253}
   - component: {fileID: 2105654677191630042}
   - component: {fileID: 7054824289776392564}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Arriving Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2930134819434935953}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Left Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 6504647733596468384}
   - component: {fileID: 7528612839908188935}
   - component: {fileID: 2679447654934301507}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Combat Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 6747696445934155151}
   - component: {fileID: 3105005446944846040}
   - component: {fileID: 4215843523437419467}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Boss Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 8145062027713158542}
   - component: {fileID: 6122126595491915921}
   - component: {fileID: 3376270485142191957}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1741321358668396611}
   - component: {fileID: 2595525607558313584}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Spawn Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7608610175753014713}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Right Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -712,7 +712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943841525116719276}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Central Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
