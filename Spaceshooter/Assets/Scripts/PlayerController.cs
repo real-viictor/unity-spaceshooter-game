@@ -33,7 +33,7 @@ public class PlayerController : Entity
 
     private bool isShieldActive = false;
 
-    private Vector3 playerCenterPosition = new Vector2(0,-4);
+    private Vector3 playerCenterPosition = new Vector3(0,-4, 0);
 
     //Variáveis que guardarão a velocidade vertical e horizontal do player
     private float horizontalSpeed, verticalSpeed;
@@ -176,6 +176,8 @@ public class PlayerController : Entity
 
     public void setCanMoveStatus(bool status)
     {
+        //Removendo a velocidade atual do Player para evitar que ele "flicke"
+        playerRB.velocity = Vector2.zero;
         canMove = status;
         //Se o player não pode se mover, então evite qualquer dano nele
         canBeHit = status;
