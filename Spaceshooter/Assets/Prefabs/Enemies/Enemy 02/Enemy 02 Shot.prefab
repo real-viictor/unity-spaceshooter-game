@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotDamage: 2
   shotExplosion: {fileID: 4680779225304755007, guid: b2c14721ce09289418ad3dfa5b58abae, type: 3}
-  origin: Enemy
+  shotSound: {fileID: 8300000, guid: b90f73e2073987e4395c419ed53bcc21, type: 3}
 --- !u!50 &-1150929503934170541
 Rigidbody2D:
   serializedVersion: 4

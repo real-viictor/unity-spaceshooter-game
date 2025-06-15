@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class FXController : MonoBehaviour
 {
+    [SerializeField] private AudioClip explosionSound;
+
     // Start is called before the first frame update
     void Start()
-    { 
-
+    {
+        AudioSource.PlayClipAtPoint(explosionSound, Vector3.zero);
     }
 
     // Update is called once per frame

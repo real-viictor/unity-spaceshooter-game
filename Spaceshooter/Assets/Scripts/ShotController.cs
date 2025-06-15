@@ -6,11 +6,13 @@ public class ShotController : MonoBehaviour
 
     [SerializeField] private GameObject shotExplosion;
 
+    [SerializeField] private AudioClip shotSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioSource.PlayClipAtPoint(shotSound, Vector3.zero);
     }
 
     // Update is called once per frame
