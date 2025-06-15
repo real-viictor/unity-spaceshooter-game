@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);    
+        if (FindObjectsOfType<GameManager>().Length <= 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     // Start is called before the first frame update
