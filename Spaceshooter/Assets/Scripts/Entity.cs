@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
         return Vector2.Distance(currentPosition, targetPosition) < 0.01f;
     }
 
-    private void DestroyEntity()
+    protected virtual void DestroyEntity()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);

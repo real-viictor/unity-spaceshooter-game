@@ -47,11 +47,14 @@ public class PlayerController : Entity
 
     private float upgradedShotTimer;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         //Coletando o Rigidbody do player
         playerRB = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -195,5 +198,12 @@ public class PlayerController : Entity
         {
             shieldChargesField.text = "x " + shieldCharges.ToString();
         }
+    }
+
+    protected override void DestroyEntity()
+    {
+        base.DestroyEntity();
+        gameManager.ReturnToMenu();
+
     }
 }
