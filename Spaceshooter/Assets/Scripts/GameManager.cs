@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);    
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +20,20 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
