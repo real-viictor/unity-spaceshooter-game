@@ -9,6 +9,7 @@ public class BossController : Entity
     [SerializeField] private float shotSpeed;
     [SerializeField] private float speedFactor;
     [SerializeField] private Image bossHealthImage;
+    [SerializeField] private Canvas bossInterface;
 
     private PlayerController playerInstance;
 
@@ -62,6 +63,7 @@ public class BossController : Entity
         stateMachineTimer = Random.Range(1f, 4f);
         bossRB = GetComponent<Rigidbody2D>();
         playerInstance = FindObjectOfType<PlayerController>();
+        bossInterface.worldCamera = Camera.main;
 
         playerInstance.setCanMoveStatus(false);
 
@@ -104,24 +106,19 @@ public class BossController : Entity
 
             if(stateMachineTimer > 0f && !isAttackPatternActive)
             {
-                Debug.Log("Reduzindo Timer do State Machine");
                 stateMachineTimer -= Time.deltaTime;
             } else 
             {
                 if(stateMachineTimer < 0f)
                 {
-                    Debug.Log("O timer chegou a zero");
                     int newPattern;
                     do
                     {
                         newPattern = Random.Range(1, 4); //TODO: Alterar Range para total de ataques do Switch
                     } while (newPattern == attackPatternState);
-                    Debug.Log("O novo ataque sorteado é: " + newPattern);
-                    Debug.Log("O ataque usado agora foi: " + attackPatternState);
                     attackPatternState = newPattern;
 
                     stateMachineTimer = Random.Range(stateMachineMinInterval, stateMachineMaxInterval);
-                    Debug.Log("O tempo para o próximo ataque é: " + stateMachineTimer);
                 }
                 
                 isAttackPatternActive = true;

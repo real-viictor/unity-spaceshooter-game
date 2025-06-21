@@ -560,6 +560,7 @@ MonoBehaviour:
   shotSpeed: 5
   speedFactor: 2
   bossHealthImage: {fileID: 4215843523437419467}
+  bossInterface: {fileID: 49922784956859226}
   standardRoamShotTimer: 0.17
   standardCannonShotTimer: 0.12
   standardMissileShotTimer: 0.18
