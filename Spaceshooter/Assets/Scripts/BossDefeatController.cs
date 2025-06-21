@@ -5,6 +5,8 @@ public class BossDefeatController : Entity
     [SerializeField] private GameObject smallExplosion;
     [SerializeField] private Transform[] explosionSpots;
 
+    private GameManager gameManager;
+
     private float explosionCreationTimer;
     private int lastExplosionIndex, currentExplosionIndex;
 
@@ -18,6 +20,11 @@ public class BossDefeatController : Entity
     void Update()
     {
         CreateExplosion();
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.ReturnToMenu();
     }
 
     private void CreateExplosion()
