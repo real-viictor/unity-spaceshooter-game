@@ -49,6 +49,8 @@ public class PlayerController : Entity
 
     private float upgradedShotTimer;
 
+    private float shotDelayTimer;
+
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -98,7 +100,7 @@ public class PlayerController : Entity
     //Disparando com o Player
     private void Shoot()
     {
-        if (Input.GetButtonDown("Shoot"))
+        if (Input.GetButtonDown("Shoot") && shotDelayTimer <= 0f)
         { 
 
             if (shotLevel == 2)
@@ -110,6 +112,10 @@ public class PlayerController : Entity
             }
 
             CreateShot(shotObjects[shotLevel - 1], shotPositions[shotLevel - 1 + shootingFromLeft], Vector2.up, shotSpeed);
+            shotDelayTimer = 0.15f;
+        } else
+        {
+            shotDelayTimer -= Time.deltaTime;
         }
     }
 
