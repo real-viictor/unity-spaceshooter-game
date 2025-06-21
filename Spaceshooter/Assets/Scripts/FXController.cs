@@ -7,7 +7,10 @@ public class FXController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource.PlayClipAtPoint(explosionSound, Vector3.zero);
+        if(explosionSound)
+        {
+            AudioSource.PlayClipAtPoint(explosionSound, Vector3.zero);
+        }
     }
 
     // Update is called once per frame

@@ -12,6 +12,9 @@ public class ShieldController : Entity
 
     [SerializeField] private Sprite[] shieldSprites;
 
+    [SerializeField] private AudioClip shieldUpSound;
+    [SerializeField] private AudioClip shieldDownSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,7 @@ public class ShieldController : Entity
 
     private void SetUpShield()
     {
+        AudioSource.PlayClipAtPoint(shieldUpSound, Vector3.zero);
         shieldTimer = shieldDuration;
         playerObject = FindObjectOfType<PlayerController>();
         playerPosition = playerObject.GetComponent<Transform>();
@@ -77,5 +81,6 @@ public class ShieldController : Entity
     private void OnDestroy()
     {
         playerObject.setShieldStatus(false);
+        AudioSource.PlayClipAtPoint(shieldDownSound, Vector3.zero);
     }
 }

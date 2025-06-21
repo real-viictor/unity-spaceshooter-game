@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interface
       objectReference: {fileID: 0}
+    - target: {fileID: 7849235078024262078, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 9050203686473413417, guid: 9222933ddab3a34468bf8eb1ea70f212, type: 3}
       propertyPath: m_Camera
       value: 
