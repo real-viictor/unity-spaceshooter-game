@@ -7,12 +7,12 @@ public class BossController : Entity
     [SerializeField] private Transform[] shotPositions;
     [SerializeField] private GameObject[] shotObjects;
     [SerializeField] private float shotSpeed;
-    [SerializeField] private float speedFactor = 1f;
+    [SerializeField] private float speedFactor;
     [SerializeField] private Image bossHealthImage;
 
     private PlayerController playerInstance;
 
-    private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition;
+    private bool isFightOcurring, isAttackPatternActive, isChangedDirection, isBossInPosition, isEnraged;
 
     private Rigidbody2D bossRB;
 
@@ -24,17 +24,20 @@ public class BossController : Entity
     private float cannonShotTimer;
     private float missileShotTimer;
 
-    private int bossMaxHealth = 100;
+    private int bossMaxHealth = 200;
 
     //Variáveis que salvam o tempo padrão de delay entre os tiros dos ataques do boss
-    [SerializeField] private float standardRoamShotTimer = 0.3f;
-    [SerializeField] private float standardCannonShotTimer = 0.2f;
-    [SerializeField] private float standardMissileShotTimer = 0.3f;
+    [SerializeField] private float standardRoamShotTimer;
+    [SerializeField] private float standardCannonShotTimer;
+    [SerializeField] private float standardMissileShotTimer;
 
-    [SerializeField] private int standardCannonShotsCounter = 3;
-    [SerializeField] private int standardCannonShotsAttacksCounter = 3;
-    [SerializeField] private int standardMissileShotsCounter = 10;
-    [SerializeField] private int standardDirectionChangeCounter = 3;
+    [SerializeField] private int standardCannonShotsCounter;
+    [SerializeField] private int standardCannonShotsAttacksCounter;
+    [SerializeField] private int standardMissileShotsCounter;
+    [SerializeField] private int standardDirectionChangeCounter;
+
+    private float stateMachineMinInterval = 1f;
+    private float stateMachineMaxInterval = 2f;
 
     private float bossSpeed = 3;
 
@@ -72,6 +75,26 @@ public class BossController : Entity
     void Update()
     {
         Attack();
+        Enrage();
+    }
+
+    private void Enrage()
+    {
+        if(entityHealth == bossMaxHealth/2 && !isEnraged)
+        {
+            standardRoamShotTimer = 0.1f;
+            standardCannonShotTimer = 0.08f;
+            standardMissileShotTimer = 0.12f;
+            standardCannonShotsCounter = 6;
+            standardMissileShotsCounter = 20;
+            standardDirectionChangeCounter = 3;
+            standardCannonShotsAttacksCounter = 5;
+            stateMachineMinInterval = 0.2f;
+            stateMachineMaxInterval = 0.8f;
+            speedFactor = 3.5f;
+
+            isEnraged = true;
+        }
     }
 
     private void Attack()
@@ -81,21 +104,26 @@ public class BossController : Entity
 
             if(stateMachineTimer > 0f && !isAttackPatternActive)
             {
-
+                Debug.Log("Reduzindo Timer do State Machine");
                 stateMachineTimer -= Time.deltaTime;
             } else 
             {
                 if(stateMachineTimer < 0f)
                 {
+                    Debug.Log("O timer chegou a zero");
                     int newPattern;
                     do
                     {
                         newPattern = Random.Range(1, 4); //TODO: Alterar Range para total de ataques do Switch
                     } while (newPattern == attackPatternState);
+                    Debug.Log("O novo ataque sorteado é: " + newPattern);
+                    Debug.Log("O ataque usado agora foi: " + attackPatternState);
                     attackPatternState = newPattern;
-                }
 
-                stateMachineTimer = Random.Range(1f, 3f);
+                    stateMachineTimer = Random.Range(stateMachineMinInterval, stateMachineMaxInterval);
+                    Debug.Log("O tempo para o próximo ataque é: " + stateMachineTimer);
+                }
+                
                 isAttackPatternActive = true;
             }
 
@@ -153,7 +181,7 @@ public class BossController : Entity
                 hasBossRoamDirection = true;
             }
 
-            bossRB.velocity = bossRoamDirection * bossSpeed;
+            bossRB.velocity = bossRoamDirection * bossSpeed * (speedFactor * 0.7f);
 
             if (bossRB.position.x > xLimit)
             {
@@ -323,7 +351,7 @@ public class BossController : Entity
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, bossCenterPosition, bossSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, bossCenterPosition, bossSpeed * speedFactor * Time.deltaTime);
             }
         }
     }

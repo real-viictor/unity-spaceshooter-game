@@ -558,15 +558,15 @@ MonoBehaviour:
   - {fileID: 421518273685639958, guid: 04da6dc87ad41864383e99d9e7c042ab, type: 3}
   - {fileID: 8953927879069231380, guid: 99fc9f3d1b4346c43839578fa38245e9, type: 3}
   shotSpeed: 5
-  speedFactor: 1
+  speedFactor: 2
   bossHealthImage: {fileID: 4215843523437419467}
-  standardRoamShotTimer: 0.3
-  standardCannonShotTimer: 0.2
-  standardMissileShotTimer: 0.3
-  standardCannonShotsCounter: 3
+  standardRoamShotTimer: 0.17
+  standardCannonShotTimer: 0.12
+  standardMissileShotTimer: 0.18
+  standardCannonShotsCounter: 4
   standardCannonShotsAttacksCounter: 3
-  standardMissileShotsCounter: 10
-  standardDirectionChangeCounter: 3
+  standardMissileShotsCounter: 12
+  standardDirectionChangeCounter: 2
 --- !u!95 &3376270485142191957
 Animator:
   serializedVersion: 5
