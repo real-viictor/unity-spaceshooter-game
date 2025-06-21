@@ -31,6 +31,8 @@ public class PlayerController : Entity
 
     [SerializeField] private TextMeshProUGUI shieldChargesField;
 
+    [SerializeField] private AudioClip deathSound;
+
     private bool isShieldActive = false;
 
     private Vector3 playerCenterPosition = new Vector3(0,-4, 0);
@@ -191,6 +193,11 @@ public class PlayerController : Entity
         return canMove;
     }
 
+    public void SetCanBeHitStatus(bool status)
+    {
+        canBeHit = status;
+    }
+
     protected override void UpdateUIStats()
     {
         base.UpdateUIStats();
@@ -203,7 +210,7 @@ public class PlayerController : Entity
     protected override void DestroyEntity()
     {
         base.DestroyEntity();
+        AudioSource.PlayClipAtPoint(deathSound, new Vector3(0,0,-10f));
         gameManager.ReturnToMenu();
-
     }
 }

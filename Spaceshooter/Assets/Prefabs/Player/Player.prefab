@@ -205,6 +205,7 @@ MonoBehaviour:
   shieldObject: {fileID: 3534288271712980700, guid: 2098a02800a9f664c8040fcdb61e8cb6, type: 3}
   canMove: 1
   shieldChargesField: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: da96d97f721c8c54d85fbc6fd61571b4, type: 3}
 --- !u!50 &5960757371140293176
 Rigidbody2D:
   serializedVersion: 4

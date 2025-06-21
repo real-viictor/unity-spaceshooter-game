@@ -7,7 +7,7 @@ public class ShieldController : Entity
     private int shieldProtection;
     private SpriteRenderer spriteRend;
 
-    private float shieldDuration = 4f;
+    private float shieldDuration = 5f;
     private float shieldTimer;
 
     [SerializeField] private Sprite[] shieldSprites;
@@ -36,11 +36,15 @@ public class ShieldController : Entity
         playerPosition = playerObject.GetComponent<Transform>();
         spriteRend = GetComponentInChildren<SpriteRenderer>();
         shieldProtection = entityHealth;
+        playerObject.SetCanBeHitStatus(false);
     }
 
     private void FollowPlayer()
     {
-        transform.position = playerPosition.position;
+        if(playerPosition)
+        {
+            transform.position = playerPosition.position;
+        }       
     }
 
     public void UpdateSprite()
@@ -81,6 +85,7 @@ public class ShieldController : Entity
     private void OnDestroy()
     {
         playerObject.setShieldStatus(false);
+        playerObject.SetCanBeHitStatus(true);
         AudioSource.PlayClipAtPoint(shieldDownSound, Vector3.zero);
     }
 }
