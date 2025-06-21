@@ -24,7 +24,7 @@ public class BossController : Entity
     private float cannonShotTimer;
     private float missileShotTimer;
 
-    private int bossMaxHealth = 200;
+    private int bossMaxHealth = 250;
 
     //Variáveis que salvam o tempo padrão de delay entre os tiros dos ataques do boss
     [SerializeField] private float standardRoamShotTimer;
