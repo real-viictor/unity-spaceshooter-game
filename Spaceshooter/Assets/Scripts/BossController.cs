@@ -335,6 +335,7 @@ public class BossController : Entity
         isFightOcurring = true;
         playerInstance.setCanMoveStatus(true);
         GetComponent<Animator>().enabled = false;
+        gameController.StartBossSoundtrack();
     }
 
     private void OnDestroy()

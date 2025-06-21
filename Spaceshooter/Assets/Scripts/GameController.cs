@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI PointsField;
 
+    [SerializeField] private AudioClip bossFightSoundtrack;
+
     //Variável do timer que controla quando o nível poderá começar
     private float levelStartTimer;
 
@@ -49,10 +51,13 @@ public class GameController : MonoBehaviour
 
     private PlayerController playerObject;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         playerObject = FindObjectOfType<PlayerController>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         levelStartTimer = 2f;
     }
 
@@ -122,6 +127,7 @@ public class GameController : MonoBehaviour
         if(!isBossSpawned)
         {
             Instantiate(bossObject, transform.position, Quaternion.identity);
+            audioSource.Stop();
             isBossSpawned = true;
         }
     }
@@ -229,5 +235,12 @@ public class GameController : MonoBehaviour
         {
             Instantiate(shotPowerUpObject, position, Quaternion.identity);
         }
+    }
+
+    public void StartBossSoundtrack()
+    {
+        audioSource.clip = bossFightSoundtrack;
+        audioSource.Play();
+        audioSource.volume = 0.1f;
     }
 }
